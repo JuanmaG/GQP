@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,NavParams,MenuController } from 'ionic-angular';
 import { PERROS } from "../../data/data.perros";
 import { Perros } from "../../interfaces/perros.interface";
 import {VistaPage} from "../index.paginas";
@@ -9,10 +9,15 @@ import {VistaPage} from "../index.paginas";
 })
 export class HomePage {
     perros:Perros[] = [];
-  constructor(public navCtrl:NavController) {
+  constructor(public navCtrl:NavController,
+    public navParams: NavParams,
+    public menuCtrl:MenuController) {
     this.perros = PERROS.slice(0);
   }
-  vista(){
-    this.navCtrl.push(VistaPage);
+  vista(perro:any){
+    this.navCtrl.push(VistaPage,{'perros':perro});
+  }
+  mostrarMenu(){
+    this.menuCtrl.toggle();
   }
 }

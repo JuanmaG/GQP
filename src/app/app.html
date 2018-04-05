@@ -1,1 +1,27 @@
-<ion-nav [root]="rootPage"></ion-nav>
+
+  <ion-menu [content]="content" class="panel">
+  <ion-header>
+    <ion-toolbar color="purple">
+      <ion-title>Panel de Control</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage(homePage)">
+        Home
+      </button>
+      <button ion-item (click)="openPage(friendsPage)">
+        Friends
+      </button>
+      <button ion-item (click)="openPage(eventsPage)">
+        Events
+      </button>
+      <button ion-item (click)="closeMenu()">
+        Close Menu
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage" #content></ion-nav>

@@ -1,21 +1,28 @@
-<ion-header>
-  <ion-navbar color="purple">
-    <ion-title>
-      !Guau Que Perros¡
-    </ion-title>
-  </ion-navbar>
+<ion-header class="header">
+
+    <div>  <button ion-button icon-left large clear
+              icon-only
+              (click)="mostrarMenu()">
+              <ion-icon name="menu">
+              </ion-icon>
+      </button>
+      <div>
+      <h2 text-center>!Guau Que Perros¡</h2>
+    </div>
+    </div>
 </ion-header>
 
 <ion-content class="contenido">
-  <ion-card *ngFor="let perro of perros"
-            (click)="vista ()">
-    <img [src]="perro.imagen"/>
+  <ion-card *ngFor="let perros of perros"
+            block
+            (click)="vista (perros)">
+    <img [src]="perros.imagen"/>
     <ion-card-content class="contenido-card">
       <ion-card-title class="blanco">
-        {{perro.nombre}} {{perro.raza}}
+        {{perros.nombre}} {{perros.raza}}
         </ion-card-title>
       <div class="blanco">
-  {{perro.historia}}
+  {{perros.historia}}
 </div>
     </ion-card-content>
   </ion-card>

@@ -14,12 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'vista.html',
 })
 export class VistaPage {
-
+  perros:any={};
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log(navParams);
+    this.perros=this.navParams.get("perros");
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VistaPage');
-  }
-
 }
