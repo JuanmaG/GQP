@@ -1,14 +1,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      !Guau Que Perros¡
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-card *ngFor="let perro of perros"
+            (click)="vista (perro)">
+    <img [src]="perro.imagen"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{perro.nombre}}
+        </ion-card-title>
+        <h1>{{raza}}</h1>
+      <p>
+  {{perro.historia}}
+      </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
