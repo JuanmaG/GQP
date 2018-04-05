@@ -1,23 +1,22 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="purple">
     <ion-title>
       !Guau Que Perros¡
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="contenido">
   <ion-card *ngFor="let perro of perros"
-            (click)="vista (perro)">
+            (click)="vista ()">
     <img [src]="perro.imagen"/>
-    <ion-card-content>
-      <ion-card-title>
-        {{perro.nombre}}
+    <ion-card-content class="contenido-card">
+      <ion-card-title class="blanco">
+        {{perro.nombre}} {{perro.raza}}
         </ion-card-title>
-        <h1>{{raza}}</h1>
-      <p>
+      <div class="blanco">
   {{perro.historia}}
-      </p>
+</div>
     </ion-card-content>
   </ion-card>
 </ion-content>
