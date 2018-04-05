@@ -7,7 +7,7 @@ export const PERROS = [
 },
 {
   nombre:"Calcetines",
-  imagen:"assets/imgs/descarga (1).jpeg",
+  imagen:"assets/imgs/descarga1.jpeg",
   raza:"bulldog",
   historia:"Perro abandonado encontrado por una familia"
 },
