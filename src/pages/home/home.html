@@ -2,7 +2,7 @@
 
     <div>  <button ion-button icon-left large clear
               icon-only
-              (click)="mostrarMenu()">
+              menuToggle>
               <ion-icon name="menu">
               </ion-icon>
       </button>
@@ -16,7 +16,7 @@
   <ion-card *ngFor="let perros of perros"
             block
             (click)="vista (perros)">
-    <img [src]="perros.imagen"/>
+      <img [src]="perros.imagen"/>
     <ion-card-content class="contenido-card">
       <ion-card-title class="blanco">
         {{perros.nombre}} {{perros.raza}}
