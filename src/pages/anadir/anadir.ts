@@ -30,4 +30,7 @@ seleccionarFoto(){
     console.log("ERROR en la imagen");
   });
 }
+goBack() {
+this.navCtrl.pop();
+}
 }

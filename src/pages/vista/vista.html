@@ -2,8 +2,8 @@
 
   <div> <button ion-button item-start large block
             icon-only
-            menuToggle>
-            <ion-icon name="menu" class="iconmenu"></ion-icon>
+            (click)="goBack()">
+            <ion-icon name="arrow-back" class="iconmenu"></ion-icon>
             &nbsp;!Guau Que Perros¡
             <ion-icon name="paw"></ion-icon>
     </button>
@@ -29,15 +29,19 @@
 
   <ion-row>
     <ion-col>
-      <button ion-button icon-left medium>
+      <button ion-button icon right large>
         <ion-icon name="thumbs-up"></ion-icon>
       </button>
     </ion-col>
     <ion-col>
-      <button ion-button icon-left clear small>
+      <button ion-button clear medium>
       </button>
     </ion-col>
-    <ion-col center text-center>
+    <ion-col>
+      <button ion-button large
+              (click)="abrirPagina(anadir)">
+        <ion-icon name="brush"></ion-icon>
+      </button>
     </ion-col>
   </ion-row>
 
