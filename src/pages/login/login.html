@@ -1,14 +1,13 @@
 <ion-header class="header">
 
-    <div>  <button ion-button icon-left large clear
+    <div>  <button ion-button icon-left large block
               icon-only
               menuToggle>
-              <ion-icon name="menu">
-              </ion-icon>
+              <ion-icon name="menu"></ion-icon>
+              &nbsp;!Guau Que Perros¡
+              <ion-icon name="paw"></ion-icon>
       </button>
-      <div>
-      <h2 text-center>!Guau Que Perros¡</h2>
-    </div>
+
     </div>
 </ion-header>
 <ion-list  color="black" class="formulario" >
@@ -25,13 +24,17 @@
             <ion-input formControlName="lastName" type="text"></ion-input>
         </ion-item>
 
-        <ion-item>
-            <ion-label floating>correo</ion-label>
-            <ion-input formControlName="age" type="text"></ion-input>
-        </ion-item>
-
     </form>
-
-    <div class="relleno">
-    </div>
 </ion-list>
+
+
+        <button ion-button item-left block
+                icon-only>
+                <ion-icon name="paw"></ion-icon>
+                &nbsp;Iniciar Sesion
+        </button>
+        <button ion-button item-left block
+                icon-only>
+                <ion-icon name="paw"></ion-icon>
+                &nbsp;Registrar
+        </button>

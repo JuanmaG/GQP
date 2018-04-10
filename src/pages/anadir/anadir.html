@@ -11,15 +11,15 @@
     </div>
     </div>
 </ion-header>
-<button ion-button item-left block class="formulario"
-        (click)="seleccionarFoto()">
-        <ion-icon name="photos"></ion-icon>
-        &nbsp;Seleccionar
-      </button>
+<div class="formulario">
 <ion-list  color="black" >
 
     <form [formGroup]="slideOneForm">
-
+      <button ion-button item-left block
+              (click)="seleccionarFoto()">
+              <ion-icon name="photos"></ion-icon>
+              &nbsp;Seleccionar
+            </button>
         <ion-item>
             <ion-label floating>Nombre del perro</ion-label>
             <ion-input formControlName="firstName" type="text"></ion-input>
@@ -37,6 +37,4 @@
 
     </form>
 
-    <div class="relleno">
-    </div>
 </ion-list>
