@@ -12,6 +12,7 @@ export class MyApp {
   rootPage:any = LoginPage;
   browser=HomePage;
   anadir=AnadirPage;
+  login=LoginPage;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

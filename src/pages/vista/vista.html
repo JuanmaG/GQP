@@ -1,17 +1,21 @@
-<ion-navbar >
-  <button ion-button icon-left small clear
-           icon-only
-           menuToggle>
-           <ion-icon name="menu">
-           </ion-icon>
-   </button>
- </ion-navbar>
+<ion-header class="header">
+
+  <div> <button ion-button item-start large block
+            icon-only
+            menuToggle>
+            <ion-icon name="menu" class="iconmenu"></ion-icon>
+            &nbsp;!Guau Que Perros¡
+            <ion-icon name="paw"></ion-icon>
+    </button>
+
+  </div>
+</ion-header>
  <ion-content>
 <ion-card class="cards">
 
   <ion-item class="cards">
     <ion-avatar item-start>
-
+    <ion-icon name="paw" ion-icon item-start large></ion-icon>
 </ion-avatar>
     &nbsp;{{perros.nombre}}<br/>
     &nbsp;{{perros.raza}}
@@ -25,7 +29,7 @@
 
   <ion-row>
     <ion-col>
-      <button ion-button icon-left small>
+      <button ion-button icon-left medium>
         <ion-icon name="thumbs-up"></ion-icon>
       </button>
     </ion-col>

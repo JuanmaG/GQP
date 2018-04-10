@@ -3,7 +3,7 @@
     <div> <button ion-button icon-left large block
               icon-only
               menuToggle>
-              <ion-icon name="menu" class="iconmenu"></ion-icon>
+              <ion-icon name="menu" class="iconmenu" text-center></ion-icon>
               &nbsp;!Guau Que Perros¡
               <ion-icon name="paw"></ion-icon>
       </button>
@@ -21,20 +21,23 @@
 
         <ion-item>
             <ion-label floating>Password</ion-label>
-            <ion-input formControlName="lastName" type="text"></ion-input>
+            <ion-input formControlName="lastName" type="password"></ion-input>
         </ion-item>
 
     </form>
 </ion-list>
-
-
         <button ion-button item-left block
-                icon-only>
-                <ion-icon name="paw"></ion-icon>
+                icon-only
+                (click)="abrirPagina(browser)">
+                <ion-icon name="paw" item-start></ion-icon>
                 &nbsp;Iniciar Sesion
         </button>
         <button ion-button item-left block
-                icon-only>
-                <ion-icon name="paw"></ion-icon>
+                icon-only
+                (click)="presentToast()">
+                <ion-icon name="paw" item-start></ion-icon>
                 &nbsp;Registrar
         </button>
+        <div class="pawiconcontainer">
+              <img src="assets/imgs/descarga.png"/>
+        </div>
