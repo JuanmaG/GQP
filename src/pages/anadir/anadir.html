@@ -1,16 +1,15 @@
 <ion-header class="header">
-<div> <button ion-button icon-left large block
+ <button ion-button icon-left large block
           icon-only
           menuToggle>
           <ion-icon name="menu" class="iconmenu"></ion-icon>
           &nbsp;!Guau Que Perros¡
           <ion-icon name="paw"></ion-icon>
   </button>
-
-</div>
 </ion-header>
-<div class="formulario">
-<ion-list  color="black" >
+<ion-content>
+<div>
+<ion-list color="black" >
 
     <form [formGroup]="slideOneForm">
       <button ion-button item-left block
@@ -31,6 +30,10 @@
         <ion-item>
             <ion-label floating>Raza</ion-label>
             <ion-input formControlName="age" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Historia</ion-label>
+            <ion-textarea formControlName="age" type="text"></ion-textarea>
         </ion-item>
 
     </form>

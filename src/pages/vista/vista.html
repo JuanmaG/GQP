@@ -1,4 +1,4 @@
-<ion-navbar color="purple"><h1>{{perros.nombre}}</h1>
+<ion-navbar >
   <button ion-button icon-left small clear
            icon-only
            menuToggle>
@@ -6,25 +6,26 @@
            </ion-icon>
    </button>
  </ion-navbar>
-<ion-card>
+ <ion-content>
+<ion-card class="cards">
 
-  <ion-item>
+  <ion-item class="cards">
     <ion-avatar item-start>
 
 </ion-avatar>
-    <h2>{{perros.nombre}}</h2>
-    <p>{{perros.raza}}</p>
+    &nbsp;{{perros.nombre}}<br/>
+    &nbsp;{{perros.raza}}
   </ion-item>
-
-  <img [src]="perros.imagen">
-
+  <div>
+  <img [src]="perros.imagen"  >
+</div>
   <ion-card-content>
-    <p>{{perros.historia}}</p>
+    {{perros.historia}}
   </ion-card-content>
 
   <ion-row>
     <ion-col>
-      <button ion-button icon-left clear small>
+      <button ion-button icon-left small>
         <ion-icon name="thumbs-up"></ion-icon>
       </button>
     </ion-col>
@@ -37,3 +38,4 @@
   </ion-row>
 
 </ion-card>
+</ion-content>
