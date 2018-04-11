@@ -9,6 +9,7 @@ import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
 })
 export class AnadirPage {
   slideOneForm: FormGroup;
+  imgPreview: string;
   constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder: FormBuilder,private imagePicker: ImagePicker) {
     this.slideOneForm = formBuilder.group({
     firstName: [''],
@@ -32,6 +33,7 @@ seleccionarFoto(){
   this.imagePicker.getPictures(options).then((results) => {
     for (var i = 0; i < results.length; i++) {
         console.log('Image URI: ' + results[i]);
+        this.imgPreview="data:image/jpeg;base64," + results[i];
     }
   }, (err) => {
     console.log("ERROR en la imagen");
