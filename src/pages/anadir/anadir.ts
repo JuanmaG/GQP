@@ -12,8 +12,15 @@ export class AnadirPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder: FormBuilder,private imagePicker: ImagePicker) {
     this.slideOneForm = formBuilder.group({
     firstName: [''],
+    pais: [''],
+    ciudad: [''],
+    poblacion:[''],
+    correo:[''],
+    telefono:[''],
     lastName: [''],
-    age: ['']
+    weight:[''],
+    descripcion: [''],
+    edad: ['']
 });
 }
 seleccionarFoto(){

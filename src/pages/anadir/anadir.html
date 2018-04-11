@@ -9,33 +9,86 @@
 </ion-header>
 <ion-content>
 <div>
+  <ion-item>
+    <ion-label>Tipo de Anuncio</ion-label>
+    <ion-select [(ngModel)]="tipo">
+      <ion-option value="1">En Adopcion</ion-option>
+      <ion-option value="2">Encontrado</ion-option>
+      <ion-option value="3">En Acogida</ion-option>
+      <ion-option value="4">Perdido</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Raza</ion-label>
+    <ion-select [(ngModel)]="raza">
+      <ion-option value="1">Mestizo</ion-option>
+      <ion-option value="2">Rottweiler</ion-option>
+      <ion-option value="3">Bulldog</ion-option>
+      <ion-option value="4">Boxer</ion-option>
+      <ion-option value="5">Doberman</ion-option>
+      <ion-option value="6">Pastor Aleman</ion-option>
+      <ion-option value="7">Mastín</ion-option>
+      <ion-option value="8">Galgo</ion-option>
+      <ion-option value="9">Beagle</ion-option>
+      <ion-option value="10">Caniche</ion-option>
+      <ion-option value="11">Chihuahua</ion-option>
+      <ion-option value="12">Husky Siberiano</ion-option>
+      <ion-option value="13">ChowChow</ion-option>
+      <ion-option value="14">Yorkshire</ion-option>
+      <ion-option value="15">Pastor Belga</ion-option>
+      <ion-option value="16">San Bernardo</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+  	<ion-label>Sexo</ion-label>
+  		<ion-select interface="popover">
+  			<ion-option value="f">Hembra</ion-option>
+  			<ion-option value="m">Macho</ion-option>
+        <ion-option value="u">Desconocido</ion-option>
+  		</ion-select>
+	  </ion-item>
 <ion-list color="black" >
-
     <form [formGroup]="slideOneForm">
       <button ion-button item-left block
               (click)="seleccionarFoto()">
               <ion-icon name="photos"></ion-icon>
               &nbsp;Seleccionar
-            </button>
+        </button>
+        <ion-item>
+            <ion-label floating>Edad</ion-label>
+            <ion-input formControlName="edad" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Pais</ion-label>
+            <ion-input formControlName="pais" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Ciudad</ion-label>
+            <ion-input formControlName="ciudad" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Poblacion</ion-label>
+            <ion-input formControlName="poblacion" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Correo Electrónico</ion-label>
+            <ion-input formControlName="correo" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Teléfono de Contacto</ion-label>
+            <ion-input formControlName="telefono" type="number"></ion-input>
+        </ion-item>
         <ion-item>
             <ion-label floating>Nombre del perro</ion-label>
             <ion-input formControlName="firstName" type="text"></ion-input>
         </ion-item>
-
         <ion-item>
-            <ion-label floating>Edad</ion-label>
-            <ion-input formControlName="lastName" type="number"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label floating>Raza</ion-label>
-            <ion-input formControlName="age" type="text"></ion-input>
+            <ion-label floating>Peso</ion-label>
+            <ion-input formControlName="weight" type="number"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Historia</ion-label>
-            <ion-textarea formControlName="age" type="text"></ion-textarea>
+            <ion-textarea formControlName="descripcion" type="text"></ion-textarea>
         </ion-item>
-
     </form>
-
 </ion-list>
