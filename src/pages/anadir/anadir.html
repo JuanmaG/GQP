@@ -47,11 +47,11 @@
         <ion-option value="u">Desconocido</ion-option>
   		</ion-select>
 	  </ion-item>
+    <ion-item *ngIf="imgPreview">
+      <img [src]="imgPreview">
+    </ion-item>
 <ion-list color="black" >
     <form [formGroup]="slideOneForm">
-      <ion-item *ngIf="imgPreview">
-        <img [src]="imgPreview">
-      </ion-item>
       <button ion-button item-left block
               (click)="seleccionarFoto()">
               <ion-icon name="photos"></ion-icon>
