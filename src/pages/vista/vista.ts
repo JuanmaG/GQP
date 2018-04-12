@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import {AnadirPage} from "../anadir/anadir";
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Screenshot } from '@ionic-native/screenshot';
 @IonicPage()
 @Component({
   selector: 'page-vista',
@@ -12,7 +13,7 @@ export class VistaPage {
   perros:any={};
   browser=HomePage;
   anadir=AnadirPage;
-  constructor(public socialSharing: SocialSharing,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private screenshot: Screenshot,public socialSharing: SocialSharing,public navCtrl: NavController, public navParams: NavParams) {
     console.log(navParams);
     this.perros=this.navParams.get("perros");
   }
@@ -22,9 +23,19 @@ export class VistaPage {
   goBack() {
   this.navCtrl.pop();
 }
-share(){
+share(img){
   var msg = "compartidoViaGuauQueAnimales";
-
-  this.socialSharing.share(msg, null, null, null);
-}
+  let imagen="data:image/jpeg;base64," + img;
+  this.screenshot.URI(80)
+    .then((res) => {
+      this.socialSharing.share(msg,null, res.URI, null)
+       .then(() => {},
+         () => {
+           alert('SocialSharing failed');
+         });
+       },
+      () => {
+      alert('Screenshot failed');
+      });
+    }
 }
