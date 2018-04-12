@@ -20,13 +20,13 @@
     &nbsp;{{perros.nombre}}<br/>
     &nbsp;{{perros.raza}}
   </ion-item>
-  <div>
+<div class="imgp">
   <img [src]="perros.imagen"  >
 </div>
   <ion-card-content>
     {{perros.historia}}
   </ion-card-content>
-
+<div class="botones">
   <ion-row>
     <ion-col>
       <button ion-button large>
@@ -34,7 +34,7 @@
       </button>
     </ion-col>
     <ion-col>
-      <button ion-button icon-left large
+      <button ion-button large
               (click)="share(perros.imagen)">
     <ion-icon name="share"></ion-icon>
     </button>
@@ -45,7 +45,13 @@
         <ion-icon name="brush"></ion-icon>
       </button>
     </ion-col>
+    <ion-col>
+      <button ion-button large
+              (click)="facebookShare()">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </button>
+    </ion-col>
   </ion-row>
-
+</div>
 </ion-card>
 </ion-content>

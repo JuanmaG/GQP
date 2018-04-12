@@ -29,7 +29,7 @@ export class AnadirPage {
 }
 seleccionarFoto(){
   let options:ImagePickerOptions = {
-    quality:70,
+    quality:100,
     outputType: 1,
     maximumImagesCount: 1
   }

@@ -21,7 +21,7 @@ export class VistaPage {
     this.navCtrl.push(pagina);
   }
   goBack() {
-  this.navCtrl.pop();
+  this.navCtrl.push(HomePage);
 }
 share(img){
   var msg = "compartidoViaGuauQueAnimales";
@@ -29,6 +29,20 @@ share(img){
   this.screenshot.URI(80)
     .then((res) => {
       this.socialSharing.share(msg,null, res.URI, null)
+       .then(() => {},
+         () => {
+           alert('SocialSharing failed');
+         });
+       },
+      () => {
+      alert('Screenshot failed');
+      });
+    }
+
+  facebookShare() {
+  this.screenshot.URI(80)
+    .then((res) => {
+      this.socialSharing.shareViaFacebook(null, res.URI, null)
        .then(() => {},
          () => {
            alert('SocialSharing failed');
