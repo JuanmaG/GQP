@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { MyApp } from './app.component';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { HomePage } from '../pages/home/home';
 import {VistaPage,AnadirPage,LoginPage} from "../pages/index.paginas"
 @NgModule({
@@ -31,6 +32,7 @@ import {VistaPage,AnadirPage,LoginPage} from "../pages/index.paginas"
     StatusBar,
     SplashScreen,
     ImagePicker,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

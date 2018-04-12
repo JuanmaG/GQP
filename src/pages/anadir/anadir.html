@@ -3,7 +3,7 @@
           icon-only
           (click)=goBack()>
           <ion-icon name="arrow-back" class="iconmenu"></ion-icon>
-          &nbsp;!Guau Que Perros¡
+          &nbsp;!Guau Que Animales
           <ion-icon name="paw"></ion-icon>
   </button>
 </ion-header>
@@ -47,8 +47,8 @@
         <ion-option value="u">Desconocido</ion-option>
   		</ion-select>
 	  </ion-item>
-    <ion-item>
-      <img src="{{imgPreview}" alt="" class="image_container" />
+    <ion-item *ngIf="imgPreview">
+      <img [src]="imgPreview"/>
     </ion-item>
 <ion-list color="black" >
     <form [formGroup]="slideOneForm">

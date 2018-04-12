@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
+import { SocialSharing } from '@ionic-native/social-sharing';
 @IonicPage()
 @Component({
   selector: 'page-anadir',
@@ -10,7 +11,7 @@ import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
 export class AnadirPage {
   slideOneForm: FormGroup;
   imgPreview: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder: FormBuilder,private imagePicker: ImagePicker) {
+  constructor(public socialSharing: SocialSharing,public navCtrl: NavController, public navParams: NavParams,public formBuilder: FormBuilder,private imagePicker: ImagePicker) {
     this.slideOneForm = formBuilder.group({
     firstName: [''],
     pais: [''],
@@ -42,4 +43,5 @@ seleccionarFoto(){
 goBack() {
 this.navCtrl.pop();
 }
+
 }

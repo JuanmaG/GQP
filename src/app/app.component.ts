@@ -24,4 +24,5 @@ export class MyApp {
   abrirPagina(pagina:any){
     this.rootPage=pagina;
   }
+
 }

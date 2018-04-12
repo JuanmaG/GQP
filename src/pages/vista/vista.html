@@ -4,7 +4,7 @@
             icon-only
             (click)="goBack()">
             <ion-icon name="arrow-back" class="iconmenu"></ion-icon>
-            &nbsp;!Guau Que Perros¡
+            &nbsp;!Guau Que Animales¡
             <ion-icon name="paw"></ion-icon>
     </button>
 
@@ -29,14 +29,16 @@
 
   <ion-row>
     <ion-col>
-      <button ion-button icon right large>
+      <button ion-button large>
         <ion-icon name="thumbs-up"></ion-icon>
       </button>
     </ion-col>
     <ion-col>
-      <button ion-button clear medium>
-      </button>
-    </ion-col>
+      <button ion-button icon-left large
+              (click)="share()">
+    <ion-icon name="share"></ion-icon>
+    </button>
+  </ion-col>
     <ion-col>
       <button ion-button large
               (click)="abrirPagina(anadir)">
