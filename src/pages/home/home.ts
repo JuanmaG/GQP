@@ -1,21 +1,31 @@
 import { Component } from '@angular/core';
 import { NavController,NavParams,MenuController } from 'ionic-angular';
-import { PERROS } from "../../data/data.perros";
-import { Perros } from "../../interfaces/perros.interface";
 import {VistaPage,AnadirPage} from "../index.paginas";
+import { Http } from '@angular/http';
+import {PerrosService}from "../../providers/perros";
+import 'rxjs/add/operator/map';
   @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-    perros:Perros[] = [];
   constructor(public navCtrl:NavController,
     public navParams: NavParams,
-    public menuCtrl:MenuController) {
-    this.perros = PERROS.slice(0);
+    public http: Http,
+    public menuCtrl:MenuController,
+    private _ps:PerrosService) {
   }
+
+  doRefresh(refresher) {
+  console.log('Begin async operation', refresher);
+  console.log(this._ps.perros);
+  setTimeout(() => {
+    console.log('Async operation has ended');
+    refresher.complete();
+  }, 2000);
+}
   vista(perro:any){
-    this.navCtrl.push(VistaPage,{'perros':perro});
+    this.navCtrl.push(VistaPage,{perro});
   }
   mostrarMenu(){
     this.menuCtrl.toggle();

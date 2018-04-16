@@ -12,16 +12,19 @@
 </ion-header>
 
 <ion-content class="contenido">
-  <ion-card *ngFor="let perros of perros"
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+  <ion-card *ngFor="let perro of _ps.perros"
             block
-            (click)="vista (perros)">
-      <img [src]="perros.imagen"/>
+            (click)="vista (perro)">
+      <img [src]="perro.image"/>
     <ion-card-content class="contenido-card">
       <ion-card-title class="blanco">
-        {{perros.nombre}} {{perros.raza}}
+        {{perro.name}} {{perro.race}}
         </ion-card-title>
       <div class="blanco">
-  {{perros.historia}}
+  {{perro.description}}
 </div>
     </ion-card-content>
   </ion-card>

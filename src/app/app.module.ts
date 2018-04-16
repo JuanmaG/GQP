@@ -9,6 +9,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
 import { HomePage } from '../pages/home/home';
 import {VistaPage,AnadirPage,LoginPage} from "../pages/index.paginas"
+import { HttpModule } from '@angular/http';
+import {PerrosService} from "../providers/perros";
 @NgModule({
   declarations: [
     MyApp,
@@ -19,6 +21,7 @@ import {VistaPage,AnadirPage,LoginPage} from "../pages/index.paginas"
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -35,6 +38,7 @@ import {VistaPage,AnadirPage,LoginPage} from "../pages/index.paginas"
     ImagePicker,
     SocialSharing,
     Screenshot,
+    PerrosService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

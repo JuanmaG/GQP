@@ -17,14 +17,14 @@
     <ion-avatar item-start>
     <ion-icon name="paw" ion-icon item-start large></ion-icon>
 </ion-avatar>
-    &nbsp;{{perros.nombre}}<br/>
-    &nbsp;{{perros.raza}}
+    &nbsp;{{perro.name}}<br/>
+    &nbsp;{{perro.race}}
   </ion-item>
 <div class="imgp">
-  <img [src]="perros.imagen"  >
+  <img [src]="perro.image"  >
 </div>
   <ion-card-content>
-    {{perros.historia}}
+    {{perro.description}}
   </ion-card-content>
 <div class="botones">
   <ion-row>
