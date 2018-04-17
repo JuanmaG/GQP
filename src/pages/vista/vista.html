@@ -23,8 +23,18 @@
 <div class="imgp">
   <img [src]="perro.image"  >
 </div>
-  <ion-card-content *ngIf="!contact">
+  <ion-card-content *ngIf="!contact" class="dropdb">
+    Edad:&nbsp;{{perro.age}}<br>
+    Sexo:&nbsp; {{perro.genre}}<br>
+    <button class="dropdb"
+                    ion-button small
+                    (click)="showStory()">historia
+      <ion-icon name="arrow-down"></ion-icon>
+    </button>
+    <div *ngIf="story" class="dopdb">
     {{perro.description}}
+  </div>
+
   </ion-card-content>
   <ion-card-content *ngIf="contact">
       {{perro.state}} {{perro.city}}<br>

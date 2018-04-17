@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  story=false;
   constructor(public navCtrl:NavController,
     public navParams: NavParams,
     public http: Http,
@@ -29,5 +30,8 @@ export class HomePage {
   }
   mostrarMenu(){
     this.menuCtrl.toggle();
+  }
+  showStory() {
+      this.story= !this.story;
   }
 }

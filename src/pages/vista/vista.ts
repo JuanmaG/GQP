@@ -13,6 +13,7 @@ import { EditarPage} from '../editar/editar';
 export class VistaPage {
   perro:any={};
   contact=false;
+  story=false;
   browser=HomePage;
   anadir=AnadirPage;
   constructor(private screenshot: Screenshot,public socialSharing: SocialSharing,public navCtrl: NavController, public navParams: NavParams) {
@@ -56,6 +57,9 @@ share(img){
     }
     contactInfo() {
         this.contact= !this.contact;
+    }
+    showStory() {
+        this.story= !this.story;
     }
     editar(perro:any){
       this.navCtrl.push(EditarPage,{'perro':perro});
