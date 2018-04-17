@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import {AnadirPage} from "../anadir/anadir";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
+import { EditarPage} from '../editar/editar';
 @IonicPage()
 @Component({
   selector: 'page-vista',
@@ -11,6 +12,7 @@ import { Screenshot } from '@ionic-native/screenshot';
 })
 export class VistaPage {
   perro:any={};
+  contact=false;
   browser=HomePage;
   anadir=AnadirPage;
   constructor(private screenshot: Screenshot,public socialSharing: SocialSharing,public navCtrl: NavController, public navParams: NavParams) {
@@ -51,5 +53,11 @@ share(img){
       () => {
       alert('Screenshot failed');
       });
+    }
+    contactInfo() {
+        this.contact= !this.contact;
+    }
+    editar(perro:any){
+      this.navCtrl.push(EditarPage,{'perro':perro});
     }
 }
