@@ -25,7 +25,7 @@ export class HomePage {
   }, 2000);
 }
   vista(perro:any){
-    this.navCtrl.push(VistaPage,{perro});
+    this.navCtrl.push(VistaPage,{'perro':perro});
   }
   mostrarMenu(){
     this.menuCtrl.toggle();

@@ -10,12 +10,12 @@ import { Screenshot } from '@ionic-native/screenshot';
   templateUrl: 'vista.html',
 })
 export class VistaPage {
-  perros:any={};
+  perro:any={};
   browser=HomePage;
   anadir=AnadirPage;
   constructor(private screenshot: Screenshot,public socialSharing: SocialSharing,public navCtrl: NavController, public navParams: NavParams) {
     console.log(navParams);
-    this.perros=this.navParams.get("perros");
+    this.perro=this.navParams.get("perro");
   }
   abrirPagina(pagina:any){
     this.navCtrl.push(pagina);

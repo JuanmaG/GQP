@@ -12,15 +12,24 @@
       <button ion-item (click)="abrirPagina(browser)">
         Browser
       </button>
-      <button ion-item (click)="openPage(friendsPage)">
-        Mis Carteles
-      </button>
       <button ion-item (click)="abrirPagina(anadir)">
         Añadir
       </button>
       <button ion-item (click)="abrirPagina(login)">
         Cuenta
       </button>
+
+      <div class="submenu">
+      <button ion-item (click)="abrirPagina(login)">
+        Login
+      </button>
+      <button ion-item (click)="abrirPagina(anadir)">
+        Añadir
+      </button>
+      <button ion-item (click)="abrirPagina(login)">
+        Mis carteles
+      </button>
+    </div>
     </ion-list>
   </ion-content>
 </ion-menu>
