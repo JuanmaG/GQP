@@ -4,7 +4,8 @@ import {VistaPage,AnadirPage} from "../index.paginas";
 import { Http } from '@angular/http';
 import {PerrosService}from "../../providers/perros";
 import 'rxjs/add/operator/map';
-  @Component({
+
+@Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
@@ -33,5 +34,9 @@ export class HomePage {
   }
   showStory() {
       this.story= !this.story;
+  }
+
+  goAnadir() {
+    this.navCtrl.push(AnadirPage);
   }
 }
