@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {VistaPage,AnadirPage,LoginPage} from "../pages/index.paginas"
@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild(Nav) nav: Nav;
   rootPage:any = LoginPage;
   browser=HomePage;
   anadir=AnadirPage;
@@ -22,8 +23,13 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-  abrirPagina(pagina:any){
-    this.rootPage=pagina;
+
+  abrirPagina(pagina:any, root=true) {
+    if (root === true) {
+      this.rootPage=pagina;
+    } else {
+      this.nav.push(pagina);
+    }
   }
 
 }

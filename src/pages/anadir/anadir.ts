@@ -45,7 +45,7 @@ seleccionarFoto(){
   });
 }
 goBack() {
-  this.navCtrl.popTo(HomePage);
+  this.navCtrl.pop();
 }
 
 }

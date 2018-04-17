@@ -21,7 +21,7 @@ export class VistaPage {
     this.navCtrl.push(pagina);
   }
   goBack() {
-  this.navCtrl.push(HomePage);
+  this.navCtrl.pop();
 }
 share(img){
   var msg = "compartidoViaGuauQueAnimales";
