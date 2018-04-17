@@ -25,12 +25,8 @@ export class MyApp {
     });
   }
 
-  abrirPagina(pagina:any, root=true) {
-    if (root === true) {
-      this.rootPage=pagina;
-    } else {
-      this.nav.push(pagina);
-    }
+  abrirPagina(pagina:any) {
+    this.nav.push(pagina);
   }
 
 public onButtonClick() {

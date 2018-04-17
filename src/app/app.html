@@ -6,35 +6,24 @@
     </ion-toolbar>
   </ion-header>
 
-
   <ion-content>
     <ion-list>
-      <button ion-item (click)="abrirPagina(browser)"
-              menuToggle>
-        Browser
-      </button>
-      <button ion-item (click)="abrirPagina(anadir, false)"
-              menuToggle>
+      <button ion-item (click)="abrirPagina(anadir)" menuToggle>
         Añadir
-      </button>
-      <button ion-item (click)="onButtonClick()">
-        Cuenta
       </button>
 
-      <div class="submenu" *ngIf="buttonClicked">
-      <button ion-item (click)="abrirPagina(login)"
-              menuToggle>
-        Login
+      <button ion-item (click)="abrirPagina(login)" menuToggle>
+        Configuración
       </button>
-      <button ion-item (click)="abrirPagina(anadir, false)"
-              menuToggle>
-        Añadir
+
+      <button ion-item (click)="abrirPagina(login)" menuToggle>
+        Mis anuncios
       </button>
-      <button ion-item (click)="abrirPagina(login)"
-              menuToggle>
-        Mis carteles
+
+      <button ion-item (click)="abrirPagina(login)" menuToggle>
+        Cerrar Sesión
       </button>
-    </div>
+
     </ion-list>
   </ion-content>
 </ion-menu>
