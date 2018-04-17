@@ -11,6 +11,7 @@ import { Screenshot } from '@ionic-native/screenshot';
 })
 export class VistaPage {
   perro:any={};
+  contact=false;
   browser=HomePage;
   anadir=AnadirPage;
   constructor(private screenshot: Screenshot,public socialSharing: SocialSharing,public navCtrl: NavController, public navParams: NavParams) {
@@ -51,5 +52,8 @@ share(img){
       () => {
       alert('Screenshot failed');
       });
+    }
+    contactInfo() {
+        this.contact= !this.contact;
     }
 }

@@ -17,12 +17,11 @@
               menuToggle>
         Añadir
       </button>
-      <button ion-item (click)="abrirPagina(login)"
-              menuToggle>
+      <button ion-item (click)="onButtonClick()">
         Cuenta
       </button>
 
-      <div class="submenu">
+      <div class="submenu" *ngIf="buttonClicked">
       <button ion-item (click)="abrirPagina(login)"
               menuToggle>
         Login
@@ -31,7 +30,8 @@
               menuToggle>
         Añadir
       </button>
-      <button ion-item (click)="abrirPagina(login)">
+      <button ion-item (click)="abrirPagina(login)"
+              menuToggle>
         Mis carteles
       </button>
     </div>

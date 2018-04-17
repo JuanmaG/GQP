@@ -14,6 +14,7 @@ export class MyApp {
   browser=HomePage;
   anadir=AnadirPage;
   login=LoginPage;
+  public buttonClicked: boolean = false;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -25,5 +26,10 @@ export class MyApp {
   abrirPagina(pagina:any){
     this.rootPage=pagina;
   }
+
+public onButtonClick() {
+
+    this.buttonClicked = !this.buttonClicked;
+}
 
 }

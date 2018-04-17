@@ -18,19 +18,26 @@
     <ion-icon name="paw" ion-icon item-start large></ion-icon>
 </ion-avatar>
     &nbsp;{{perro.name}}<br/>
-    &nbsp;{{perro.race}}
+    &nbsp;{{perro.race}} ({{perro.state}},{{perro.city}})
   </ion-item>
 <div class="imgp">
   <img [src]="perro.image"  >
 </div>
-  <ion-card-content>
+  <ion-card-content *ngIf="!contact">
     {{perro.description}}
+  </ion-card-content>
+  <ion-card-content *ngIf="contact">
+      {{perro.state}} {{perro.city}}<br>
+       Email: &nbsp;{{perro.email}}
+       Telefono: &nbsp;{{perro.phone}}
   </ion-card-content>
 <div class="botones">
   <ion-row>
     <ion-col>
       <button ion-button large>
-        <ion-icon name="thumbs-up"></ion-icon>
+        <ion-icon name="call"
+                  (click)="contactInfo()">
+              </ion-icon>
       </button>
     </ion-col>
     <ion-col>
