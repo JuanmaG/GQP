@@ -4,7 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { HomePage } from '../home/home';
-@IonicPage()
+@IonicPage({
+   defaultHistory: ['browser']
+})
 @Component({
   selector: 'page-anadir',
   templateUrl: 'anadir.html',
@@ -43,7 +45,7 @@ seleccionarFoto(){
   });
 }
 goBack() {
-  this.navCtrl.pop();
+  this.navCtrl.popTo(HomePage);
 }
 
 }

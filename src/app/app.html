@@ -9,21 +9,26 @@
 
   <ion-content>
     <ion-list>
-      <button ion-item (click)="abrirPagina(browser)">
+      <button ion-item (click)="abrirPagina(browser)"
+              menuToggle>
         Browser
       </button>
-      <button ion-item (click)="abrirPagina(anadir)">
+      <button ion-item (click)="abrirPagina(anadir)"
+              menuToggle>
         Añadir
       </button>
-      <button ion-item (click)="abrirPagina(login)">
+      <button ion-item (click)="abrirPagina(login)"
+              menuToggle>
         Cuenta
       </button>
 
       <div class="submenu">
-      <button ion-item (click)="abrirPagina(login)">
+      <button ion-item (click)="abrirPagina(login)"
+              menuToggle>
         Login
       </button>
-      <button ion-item (click)="abrirPagina(anadir)">
+      <button ion-item (click)="abrirPagina(anadir)"
+              menuToggle>
         Añadir
       </button>
       <button ion-item (click)="abrirPagina(login)">
