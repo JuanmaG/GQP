@@ -10,7 +10,7 @@
 
   </div>
 </ion-header>
- <ion-content>
+ <ion-content class="contenido">
 <ion-card class="cards">
 
   <ion-item class="cards">
@@ -28,7 +28,7 @@
   </ion-card-content>
   <ion-card-content *ngIf="contact">
       {{perro.state}} {{perro.city}}<br>
-       Email: &nbsp;{{perro.email}}
+       Email: &nbsp;{{perro.email}}<br>
        Telefono: &nbsp;{{perro.phone}}
   </ion-card-content>
 <div class="botones">
@@ -48,7 +48,7 @@
   </ion-col>
     <ion-col>
       <button ion-button large
-              (click)="abrirPagina(anadir)">
+              (click)="editar (perro)">
         <ion-icon name="brush"></ion-icon>
       </button>
     </ion-col>

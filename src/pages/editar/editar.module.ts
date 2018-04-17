@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { EditarPage } from './editar';
-
+import { EditarPage} from './editar';
+import { ImagePicker } from '@ionic-native/image-picker';
 @NgModule({
   declarations: [
     EditarPage,
@@ -10,4 +10,5 @@ import { EditarPage } from './editar';
     IonicPageModule.forChild(EditarPage),
   ],
 })
-export class EditarPageModule {}
+export class EditarPageModule {
+}

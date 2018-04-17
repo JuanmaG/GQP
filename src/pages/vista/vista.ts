@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import {AnadirPage} from "../anadir/anadir";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
+import { EditarPage} from '../editar/editar';
 @IonicPage()
 @Component({
   selector: 'page-vista',
@@ -55,5 +56,8 @@ share(img){
     }
     contactInfo() {
         this.contact= !this.contact;
+    }
+    editar(perro:any){
+      this.navCtrl.push(EditarPage,{'perro':perro});
     }
 }
