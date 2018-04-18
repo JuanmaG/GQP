@@ -11,6 +11,7 @@ import { LoadingController } from 'ionic-angular';
 })
 export class HomePage {
   story=false;
+  newperros:any[]=[];
   constructor(public navCtrl:NavController,
     public navParams: NavParams,
     public http: Http,
@@ -18,15 +19,25 @@ export class HomePage {
     private _ps:PerrosService,
     public loadingController:LoadingController) {
   }
+cargar(){
+  this.http.get("http://guauqueanimales.com/dogs/adopteds/")
+            .map( resp => resp.json() )
+            .subscribe( data=>{
+              console.log(data);
+              if(data.error){
 
+              }else{
+                this.newperros.push(...data);
+                this._ps.perros=this.newperros;
+              }})
+            }
   doRefresh(refresher) {
-  console.log('Begin async operation', refresher);
-  console.log(this._ps.perros);
-  setTimeout(() => {
-    console.log('Async operation has ended');
-    refresher.complete();
-  }, 2000);
-}
+    console.log("refreshing");
+    setTimeout(() => {
+      refresher.complete();
+      this.cargar();
+    }, 2000);
+  }
   vista(perro:any){
     this.navCtrl.push(VistaPage,{'perro':perro});
   }
