@@ -4,8 +4,8 @@ import {VistaPage,AnadirPage} from "../index.paginas";
 import { Http } from '@angular/http';
 import {PerrosService}from "../../providers/perros";
 import 'rxjs/add/operator/map';
-
-@Component({
+import { LoadingController } from 'ionic-angular';
+  @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
@@ -15,7 +15,8 @@ export class HomePage {
     public navParams: NavParams,
     public http: Http,
     public menuCtrl:MenuController,
-    private _ps:PerrosService) {
+    private _ps:PerrosService,
+    public loadingController:LoadingController) {
   }
 
   doRefresh(refresher) {
@@ -34,9 +35,5 @@ export class HomePage {
   }
   showStory() {
       this.story= !this.story;
-  }
-
-  goAnadir() {
-    this.navCtrl.push(AnadirPage);
   }
 }
