@@ -8,7 +8,7 @@ import { MyApp } from './app.component';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
 import { HomePage } from '../pages/home/home';
-import {VistaPage,AnadirPage,LoginPage,EditarPage,ConfigurationPage} from "../pages/index.paginas"
+import {VistaPage,AnadirPage,LoginPage,EditarPage,ConfigurationPage,MisanunciosPage} from "../pages/index.paginas"
 import { HttpModule } from '@angular/http';
 import {PerrosService} from "../providers/perros";
 @NgModule({
@@ -19,7 +19,8 @@ import {PerrosService} from "../providers/perros";
     AnadirPage,
     LoginPage,
     EditarPage,
-    ConfigurationPage
+    ConfigurationPage,
+    MisanunciosPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,8 @@ import {PerrosService} from "../providers/perros";
     AnadirPage,
     LoginPage,
     EditarPage,
-    ConfigurationPage
+    ConfigurationPage,
+    MisanunciosPage
   ],
   providers: [
     StatusBar,
