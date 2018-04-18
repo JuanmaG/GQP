@@ -1,0 +1,82 @@
+<ion-header class="header">
+ <button ion-button icon-left large block
+          icon-only
+          (click)=goBack()>
+          <ion-icon name="arrow-back" class="iconmenu"></ion-icon>
+          &nbsp;!Guau Que Animales
+          <ion-icon name="paw"></ion-icon>
+  </button>
+</ion-header>
+<ion-content>
+  <ion-list no-border>
+
+    <ion-list-header>
+      Opciones de la App
+    </ion-list-header>
+
+    <ion-item>
+      <ion-toggle checked="false"></ion-toggle>
+      <ion-label>
+        Mostrar historias
+      </ion-label>
+      <ion-icon name='body' item-start></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-toggle checked="false"></ion-toggle>
+      <ion-label>
+      Solo En Adopcion
+    </ion-label>
+      <ion-icon name='clipboard' item-start></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-toggle checked="false"></ion-toggle>
+        <ion-label>
+          Solo de España
+        </ion-label>
+        <ion-icon name='archive' item-start></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          Cambiar tema
+        </ion-label>
+        <ion-note item-end>
+          Cambiar aspecto
+        </ion-note>
+        <ion-icon name='brush' item-start></ion-icon>
+      </ion-item>
+
+  </ion-list>
+  <ion-list no-border>
+
+    <ion-list-header>
+      Opciones de la Cuenta
+    </ion-list-header>
+
+    <ion-item>
+      <ion-toggle checked="false"></ion-toggle>
+      <ion-label>
+        Recordar datos
+      </ion-label>
+      <ion-icon name='cog' item-start></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+      Cambiar Contraseña
+      </ion-label>
+      <ion-icon name='bulb' item-start></ion-icon>
+    </ion-item>
+
+      <ion-item>
+        <ion-toggle checked="false"></ion-toggle>
+        <ion-label>
+          Añadir contacto
+        </ion-label>
+        <ion-icon name='contact' item-start></ion-icon>
+      </ion-item>
+
+  </ion-list>
+</ion-content>

@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {VistaPage,AnadirPage,LoginPage} from "../pages/index.paginas"
+import {VistaPage,AnadirPage,LoginPage,ConfigurationPage} from "../pages/index.paginas"
 import { HomePage } from '../pages/home/home';
 
 
@@ -15,6 +15,7 @@ export class MyApp {
   browser=HomePage;
   anadir=AnadirPage;
   login=LoginPage;
+  configuration=ConfigurationPage;
   public buttonClicked: boolean = false;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -30,7 +31,6 @@ export class MyApp {
   }
 
 public onButtonClick() {
-
     this.buttonClicked = !this.buttonClicked;
 }
 
