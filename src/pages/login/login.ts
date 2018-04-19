@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
 import { HomePage } from '../home/home';
 import { ToastController } from 'ionic-angular';
-
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -13,12 +13,24 @@ import { ToastController } from 'ionic-angular';
 export class LoginPage {
   browser=HomePage;
   slideOneForm: FormGroup;
-  constructor(private toastCtrl: ToastController,public navCtrl: NavController, public navParams: NavParams,public formBuilder: FormBuilder,private imagePicker: ImagePicker) {
+  isLoggedIn:boolean = false;
+  users: any;
+  constructor(private fb: Facebook,private toastCtrl: ToastController,public navCtrl: NavController, public navParams: NavParams,public formBuilder: FormBuilder,private imagePicker: ImagePicker) {
     this.slideOneForm = formBuilder.group({
     firstName: [''],
     lastName: [''],
     age: ['']
 });
+fb.getLoginStatus()
+  .then(res => {
+    console.log(res.status);
+    if(res.status === "connect") {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
+  })
+  .catch(e => console.log(e));
 }
 
 presentToast() {
@@ -36,5 +48,27 @@ presentToast() {
 }
 abrirPagina(pagina:any){
   this.navCtrl.push(pagina);
+}
+login() {
+  this.fb.login(['public_profile', 'user_friends', 'email'])
+    .then(res => {
+      if(res.status === "connected") {
+        this.isLoggedIn = true;
+        this.getUserDetail(res.authResponse.userID);
+      } else {
+        this.isLoggedIn = false;
+      }
+    })
+    .catch(e => console.log('Error logging into Facebook', e));
+}
+getUserDetail(userid) {
+  this.fb.api("/"+userid+"/?fields=id,email,name,picture,gender",["public_profile"])
+    .then(res => {
+      console.log(res);
+      this.users = res;
+    })
+    .catch(e => {
+      console.log(e);
+    });
 }
 }

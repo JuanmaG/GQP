@@ -10,6 +10,7 @@ import { Screenshot } from '@ionic-native/screenshot';
 import { HomePage } from '../pages/home/home';
 import {VistaPage,AnadirPage,LoginPage,EditarPage,ConfigurationPage,MisanunciosPage} from "../pages/index.paginas"
 import { HttpModule } from '@angular/http';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import {PerrosService} from "../providers/perros";
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {PerrosService} from "../providers/perros";
     ImagePicker,
     SocialSharing,
     Screenshot,
+    Facebook,
     PerrosService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

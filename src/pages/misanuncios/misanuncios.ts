@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the MisanunciosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Screenshot } from '@ionic-native/screenshot';
 @IonicPage()
 @Component({
   selector: 'page-misanuncios',
@@ -15,11 +9,35 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MisanunciosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private screenshot: Screenshot,public socialSharing: SocialSharing,public navCtrl: NavController, public navParams: NavParams) {
   }
+  share(img){
+    var msg = "compartidoViaGuauQueAnimales";
+    let imagen="data:image/jpeg;base64," + img;
+    this.screenshot.URI(80)
+      .then((res) => {
+        this.socialSharing.share(msg,null, res.URI, null)
+         .then(() => {},
+           () => {
+             alert('SocialSharing failed');
+           });
+         },
+        () => {
+        alert('Screenshot failed');
+        });
+      }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MisanunciosPage');
-  }
-
+    facebookShare() {
+    this.screenshot.URI(80)
+      .then((res) => {
+        this.socialSharing.shareViaFacebook(null, res.URI, null)
+         .then(() => {},
+           () => {
+             alert('SocialSharing failed');
+           });
+         },
+        () => {
+        alert('Screenshot failed');
+        });
+      }
 }

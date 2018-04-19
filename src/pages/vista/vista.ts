@@ -5,6 +5,7 @@ import {AnadirPage} from "../anadir/anadir";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
 import { EditarPage} from '../editar/editar';
+
 @IonicPage()
 @Component({
   selector: 'page-vista',

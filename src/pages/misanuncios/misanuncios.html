@@ -19,13 +19,9 @@
       </ion-avatar>
       <h2>Perro</h2>
     </ion-item>
-    <ion-item-options side="left">
+    <ion-item-options side="right">
       <button ion-button>EDITAR</button>
       <button ion-button color="danger">COMPARTIR</button>
-    </ion-item-options>
-
-    <ion-item-options side="right">
-      <button ion-button>MARCAR ADOPTADO</button>
     </ion-item-options>
   </ion-item-sliding>
   <ion-item-sliding class="segm">
@@ -35,13 +31,9 @@
       </ion-avatar>
       <h2>Perro</h2>
     </ion-item>
-    <ion-item-options side="left">
+    <ion-item-options side="right">
       <button ion-button>EDITAR</button>
       <button ion-button color="danger">COMPARTIR</button>
-    </ion-item-options>
-
-    <ion-item-options side="right">
-      <button ion-button>MARCAR ADOPTADO</button>
     </ion-item-options>
   </ion-item-sliding>
   <ion-item-sliding class="segm">
@@ -51,13 +43,9 @@
       </ion-avatar>
       <h2>Perro</h2>
     </ion-item>
-    <ion-item-options side="left">
+    <ion-item-options side="right">
       <button ion-button>EDITAR</button>
       <button ion-button color="danger">COMPARTIR</button>
-    </ion-item-options>
-
-    <ion-item-options side="right">
-      <button ion-button>MARCAR ADOPTADO</button>
     </ion-item-options>
   </ion-item-sliding>
   <ion-item-sliding class="segm">
@@ -67,13 +55,9 @@
       </ion-avatar>
       <h2>Perro</h2>
     </ion-item>
-    <ion-item-options side="left">
-      <button ion-button>EDITAR</button>
-      <button ion-button color="danger">COMPARTIR</button>
-    </ion-item-options>
-
     <ion-item-options side="right">
-      <button ion-button>MARCAR ADOPTADO</button>
+      <button ion-button (click)="editar (perro)">EDITAR</button>
+      <button ion-button (click)="share"color="danger">COMPARTIR</button>
     </ion-item-options>
   </ion-item-sliding>
 </ion-list>

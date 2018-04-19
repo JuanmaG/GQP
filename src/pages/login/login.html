@@ -26,18 +26,18 @@
 
     </form>
 </ion-list>
-        <button ion-button item-left block
-                icon-only
+<ion-item>
+        <button ion-button item-start
                 (click)="abrirPagina(browser)">
-                <ion-icon name="paw" item-start></ion-icon>
+                <ion-icon name="paw"></ion-icon>
                 &nbsp;Iniciar Sesion
         </button>
-        <button ion-button item-left block
-                icon-only
-                (click)="presentToast()">
-                <ion-icon name="paw" item-start></ion-icon>
-                &nbsp;Registrar
-        </button>
+        <button ion-button item-end
+                (click)="login()">
+                <ion-icon name="logo-facebook"></ion-icon>
+                &nbsp;Iniciar sesion
+                </button>
+      </ion-item>
         <div class="pawiconcontainer">
               <img src="assets/imgs/descarga.png"/>
         </div>
