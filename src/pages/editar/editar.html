@@ -10,17 +10,9 @@
 <ion-content>
 <div>
   <ion-item>
-    <ion-label>Tipo de Anuncio</ion-label>
-    <ion-select [(ngModel)]="tipo">
-      <ion-option value="1">En Adopcion</ion-option>
-      <ion-option value="2">Encontrado</ion-option>
-      <ion-option value="3">En Acogida</ion-option>
-      <ion-option value="4">Perdido</ion-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label>{{perro.race}}</ion-label>
-    <ion-select [(ngModel)]="raza">
+    <ion-label>Raza</ion-label>
+    <ion-select interface="popover">
+      <ion-option value="18" selected>{{perro.race}}</ion-option>
       <ion-option value="1">Mestizo</ion-option>
       <ion-option value="2">Rottweiler</ion-option>
       <ion-option value="3">Bulldog</ion-option>
@@ -40,8 +32,9 @@
     </ion-select>
   </ion-item>
   <ion-item>
-  	<ion-label>{{perro.genre}}</ion-label>
+  	<ion-label>Genero</ion-label>
   		<ion-select interface="popover">
+        <ion-option value="z" selected>{{perro.genre}}</ion-option>
   			<ion-option value="f">Hembra</ion-option>
   			<ion-option value="m">Macho</ion-option>
         <ion-option value="u">Desconocido</ion-option>
