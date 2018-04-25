@@ -11,24 +11,8 @@
 <div>
   <ion-item>
     <ion-label>Raza</ion-label>
-    <ion-select interface="popover">
-      <ion-option value="18" selected>{{perro.race}}</ion-option>
-      <ion-option value="1">Mestizo</ion-option>
-      <ion-option value="2">Rottweiler</ion-option>
-      <ion-option value="3">Bulldog</ion-option>
-      <ion-option value="4">Boxer</ion-option>
-      <ion-option value="5">Doberman</ion-option>
-      <ion-option value="6">Pastor Aleman</ion-option>
-      <ion-option value="7">Mastín</ion-option>
-      <ion-option value="8">Galgo</ion-option>
-      <ion-option value="9">Beagle</ion-option>
-      <ion-option value="10">Caniche</ion-option>
-      <ion-option value="11">Chihuahua</ion-option>
-      <ion-option value="12">Husky Siberiano</ion-option>
-      <ion-option value="13">ChowChow</ion-option>
-      <ion-option value="14">Yorkshire</ion-option>
-      <ion-option value="15">Pastor Belga</ion-option>
-      <ion-option value="16">San Bernardo</ion-option>
+    <ion-select #C okText="Aceptar" cancelText="Cancelar" (ionChange)="updateRace(C.value)">
+      <ion-option *ngFor="let race of races" value="{{race}}" [selected]="race == nameRaceSelected">{{race}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>

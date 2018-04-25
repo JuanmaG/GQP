@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { EditarPage} from './editar';
-import { ImagePicker } from '@ionic-native/image-picker';
+import { EditarPage } from './editar';
+
 @NgModule({
   declarations: [
     EditarPage,
