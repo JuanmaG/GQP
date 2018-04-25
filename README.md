@@ -8,6 +8,7 @@
 1) Clone Repository
 
     git clone https://github.com/JuanmaG/GQP.git
+    cd GQP
 
 2) Install npm requirements
 
