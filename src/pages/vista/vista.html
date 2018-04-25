@@ -18,10 +18,10 @@
     <ion-icon name="paw" ion-icon item-start large></ion-icon>
 </ion-avatar>
     &nbsp;{{perro.name}}<br/>
-    &nbsp;{{perro.race}} ({{perro.state}},{{perro.city}}, {{perro.town}})
+    &nbsp;{{perro.race}} ({{perro.state}}, {{perro.city}}, {{perro.town}})
   </ion-item>
 <div class="imgp">
-  <img [src]="perro.image"  >
+  <img id="imageid" crossOrigin="Anonymous" [src]="perro.image"  >
 </div>
   <ion-card-content>
     <p class="cards">Edad: {{perro.age}}</p>
@@ -35,10 +35,11 @@
   <ion-row>
     <ion-col>
       <button ion-button large
-              (click)="share(perros.imagen)">
+              (click)="share()">
     <ion-icon name="share"></ion-icon>
     </button>
   </ion-col>
+
     <ion-col>
       <button ion-button large
               (click)="editar (perro)">
