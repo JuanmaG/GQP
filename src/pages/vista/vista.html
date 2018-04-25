@@ -18,20 +18,18 @@
     <ion-icon name="paw" ion-icon item-start large></ion-icon>
 </ion-avatar>
     &nbsp;{{perro.name}}<br/>
-    &nbsp;{{perro.race}} ({{perro.state}},{{perro.city}})
+    &nbsp;{{perro.race}} ({{perro.state}},{{perro.city}}, {{perro.town}})
   </ion-item>
 <div class="imgp">
   <img [src]="perro.image"  >
 </div>
   <ion-card-content>
-    Edad:&nbsp;{{perro.age}}<br>
-    Sexo:&nbsp; {{perro.genre}}<br>
-    Historia:{{perro.description}}
-  </ion-card-content>
-  <ion-card-content>
-      {{perro.state}} {{perro.city}}<br>
-       Email: &nbsp;{{perro.email}}<br>
-       Telefono: &nbsp;{{perro.phone}}
+    <p class="cards">Edad: {{perro.age}}</p>
+    <p class="cards">Sexo: {{perro.genre}}</p>
+    <p class="cards">Historia: {{perro.description}}</p>
+    <p class="cards">Email: {{perro.email}}</p>
+    <p class="cards">Telefono: {{perro.phone}}</p>
+    <p class="cards">Fecha de publicación: {{perro.date_created}}</p>
   </ion-card-content>
 <div class="botones">
   <ion-row>
