@@ -16,8 +16,9 @@ export class EditarPage {
   imgPreview: string;
   perro:any={};
   public nameRaceSelected: any = null;
+  public nameGenreSelected: any = null;
   browser:HomePage;
-  
+
   // TODO: Eliminar este listado de aquí y meterlo en un json de configuración
   public races = [
     'Mestizo',
@@ -36,6 +37,11 @@ export class EditarPage {
     'Yorkshire',
     'Pastor Belga',
     'San Bernardo'
+  ]
+  public genres = [
+    'Macho',
+    'Hembra',
+    'Desconocido'
   ]
 
   constructor(public socialSharing: SocialSharing,
@@ -59,10 +65,15 @@ export class EditarPage {
     });
 
     this.nameRaceSelected = this.perro.race;
+    this.nameGenreSelected = this.perro.genre;
   }
 
   updateRace() {
     console.log('actualizamos raza del perro');
+  }
+
+  updateGenre(){
+    console.log('acutalizacion genero Perro');
   }
 
   seleccionarFoto() {
