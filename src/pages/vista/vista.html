@@ -1,59 +1,72 @@
 <ion-header class="header">
-
-  <div> <button ion-button item-start large block
+  <div>
+    <button ion-button item-start large block
             icon-only
             (click)="goBack()">
             <ion-icon name="arrow-back" class="iconmenu"></ion-icon>
             &nbsp;!Guau Que Animales¡
             <ion-icon name="paw"></ion-icon>
     </button>
-
   </div>
 </ion-header>
- <ion-content class="contenido">
-<ion-card class="cards">
 
-  <ion-item class="cards">
-    <ion-avatar item-start>
-    <ion-icon name="paw" ion-icon item-start large></ion-icon>
-</ion-avatar>
-    &nbsp;{{perro.name}}<br/>
-    &nbsp;{{perro.race}} ({{perro.state}},{{perro.city}})
-  </ion-item>
-<div class="imgp">
-  <img [src]="perro.image"  >
-</div>
+<ion-content class="contenido">
+
+  <ion-card class="cards">
+
+    <ion-item class="cards">
+      <ion-avatar item-start>
+        <ion-icon name="paw" ion-icon item-start large></ion-icon>
+      </ion-avatar>
+      &nbsp;{{perro.name}}<br/>
+      &nbsp;{{perro.race}} ({{perro.state}},{{perro.city}})
+    </ion-item>
+
+  <div class="imgp">
+    <img [src]="perro.image"  >
+  </div>
+
   <ion-card-content>
     Edad:&nbsp;{{perro.age}}<br>
     Sexo:&nbsp; {{perro.genre}}<br>
     Historia:{{perro.description}}
   </ion-card-content>
+
   <ion-card-content>
-      {{perro.state}} {{perro.city}}<br>
-       Email: &nbsp;{{perro.email}}<br>
-       Telefono: &nbsp;{{perro.phone}}
+    {{perro.state}} {{perro.city}}<br>
+    Email: &nbsp;{{perro.email}}<br>
+    Telefono: &nbsp;{{perro.phone}}
   </ion-card-content>
-<div class="botones">
-  <ion-row>
-    <ion-col>
-      <button ion-button large
-              (click)="share(perros.imagen)">
-    <ion-icon name="share"></ion-icon>
-    </button>
-  </ion-col>
-    <ion-col>
-      <button ion-button large
-              (click)="editar (perro)">
-        <ion-icon name="brush"></ion-icon>
+
+  <div class="botones">
+
+    <ion-row>
+
+      <ion-col>
+        <button ion-button large
+                (click)="share(perros.imagen)">
+      <ion-icon name="share"></ion-icon>
       </button>
     </ion-col>
-    <ion-col>
-      <button ion-button large
-              (click)="facebookShare()">
-        <ion-icon name="logo-facebook"></ion-icon>
-      </button>
-    </ion-col>
-  </ion-row>
-</div>
-</ion-card>
+
+      <ion-col>
+        <button ion-button large
+                (click)="editar (perro)">
+          <ion-icon name="brush"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col>
+
+        <button ion-button large
+                (click)="facebookShare()">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </button>
+      </ion-col>
+
+    </ion-row>
+
+  </div>
+
+  </ion-card>
+  
 </ion-content>

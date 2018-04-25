@@ -1,64 +1,81 @@
 <ion-header class="header">
-
-  <div> <button ion-button item-start large block
+  <div>
+    <button ion-button item-start large block
             icon-only
             menuToggle>
             <ion-icon name="menu" class="iconmenu"></ion-icon>
             &nbsp;!Guau Que Animales¡
             <ion-icon name="paw"></ion-icon>
     </button>
-
   </div>
 </ion-header>
+
 <ion-content>
+
 <ion-list>
   <ion-item-sliding class="segm">
+
     <ion-item>
       <ion-avatar item-start>
         <img src="../../assets/imgs/descarga.jpeg">
       </ion-avatar>
       <h2>Perro</h2>
     </ion-item>
+
     <ion-item-options side="right">
       <button ion-button>EDITAR</button>
       <button ion-button color="danger">COMPARTIR</button>
     </ion-item-options>
+
   </ion-item-sliding>
+
   <ion-item-sliding class="segm">
+
     <ion-item>
       <ion-avatar item-start>
         <img src="../../assets/imgs/descarga1.jpeg">
       </ion-avatar>
       <h2>Perro</h2>
     </ion-item>
+
     <ion-item-options side="right">
       <button ion-button>EDITAR</button>
       <button ion-button color="danger">COMPARTIR</button>
     </ion-item-options>
+
   </ion-item-sliding>
+
   <ion-item-sliding class="segm">
+
     <ion-item>
       <ion-avatar item-start>
         <img src="../../assets/imgs/descarga.jpeg">
       </ion-avatar>
       <h2>Perro</h2>
     </ion-item>
+
     <ion-item-options side="right">
       <button ion-button>EDITAR</button>
       <button ion-button color="danger">COMPARTIR</button>
     </ion-item-options>
+
   </ion-item-sliding>
+
   <ion-item-sliding class="segm">
+
     <ion-item>
       <ion-avatar item-start>
         <img src="../../assets/imgs/descarga1.jpeg">
       </ion-avatar>
       <h2>Perro</h2>
     </ion-item>
+
     <ion-item-options side="right">
       <button ion-button (click)="editar (perro)">EDITAR</button>
       <button ion-button (click)="share"color="danger">COMPARTIR</button>
     </ion-item-options>
+
   </ion-item-sliding>
+  
 </ion-list>
 </ion-content>

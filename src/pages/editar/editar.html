@@ -7,8 +7,11 @@
           <ion-icon name="paw"></ion-icon>
   </button>
 </ion-header>
+
 <ion-content>
 <div>
+
+
   <ion-item>
     <ion-label>Raza</ion-label>
     <ion-select interface="popover">
@@ -31,6 +34,8 @@
       <ion-option value="16">San Bernardo</ion-option>
     </ion-select>
   </ion-item>
+
+
   <ion-item>
   	<ion-label>Genero</ion-label>
   		<ion-select interface="popover">
@@ -40,9 +45,13 @@
         <ion-option value="u">Desconocido</ion-option>
   		</ion-select>
 	  </ion-item>
+
+
     <ion-item *ngIf="imgPreview">
       <img [src]="imgPreview"/>
     </ion-item>
+
+
 <ion-list color="black" >
     <form [formGroup]="slideOneForm">
       <button ion-button item-left block
