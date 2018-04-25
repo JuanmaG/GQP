@@ -1,15 +1,15 @@
 <ion-header class="header">
-
-    <div> <button ion-button icon-left large block
+    <div>
+      <button ion-button icon-left large block
               icon-only
               menuToggle>
               <ion-icon name="menu" class="iconmenu" text-center></ion-icon>
               &nbsp;!Guau Que Animales¡
               <ion-icon name="paw"></ion-icon>
       </button>
-
     </div>
 </ion-header>
+
 <ion-list  color="black" class="formulario" >
 
     <form [formGroup]="slideOneForm">
@@ -26,18 +26,22 @@
 
     </form>
 </ion-list>
+
 <ion-item>
         <button ion-button item-start
                 (click)="abrirPagina(browser)">
                 <ion-icon name="paw"></ion-icon>
                 &nbsp;Iniciar Sesion
         </button>
+
         <button ion-button item-end
                 (click)="login()">
                 <ion-icon name="logo-facebook"></ion-icon>
                 &nbsp;Iniciar sesion
                 </button>
-      </ion-item>
+
+</ion-item>
+
         <div class="pawiconcontainer">
               <img src="assets/imgs/descarga.png"/>
         </div>

@@ -1,13 +1,12 @@
 <ion-header class="header">
-
-  <div> <button ion-button item-start large block
+  <div>
+    <button ion-button item-start large block
             icon-only
             (click)="goBack()">
             <ion-icon name="arrow-back" class="iconmenu"></ion-icon>
             &nbsp;!Guau Que Animales¡
             <ion-icon name="paw"></ion-icon>
     </button>
-
   </div>
 </ion-header>
  <ion-content class="contenido">
@@ -31,28 +30,30 @@
     <p class="cards">Telefono: {{perro.phone}}</p>
     <p class="cards">Fecha de publicación: {{perro.date_created}}</p>
   </ion-card-content>
+
 <div class="botones">
   <ion-row>
     <ion-col>
-      <button ion-button large
-              (click)="share()">
-    <ion-icon name="share"></ion-icon>
-    </button>
-  </ion-col>
+      <button ion-button large (click)="share()">
+        <ion-icon name="share"></ion-icon>
+      </button>
+    </ion-col>
 
     <ion-col>
-      <button ion-button large
-              (click)="editar (perro)">
+      <button ion-button large (click)="editar (perro)">
         <ion-icon name="brush"></ion-icon>
       </button>
     </ion-col>
+
     <ion-col>
-      <button ion-button large
-              (click)="facebookShare()">
+      <button ion-button large (click)="facebookShare()">
         <ion-icon name="logo-facebook"></ion-icon>
       </button>
     </ion-col>
-  </ion-row>
-</div>
-</ion-card>
+
+    </ion-row>
+  </div>
+
+  </ion-card>
+
 </ion-content>

@@ -1,36 +1,41 @@
 <ion-header class="header">
-
-  <div> <button ion-button item-start large block
+  <div>
+    <button ion-button item-start large block
             icon-only
             menuToggle>
             <ion-icon name="menu" class="iconmenu"></ion-icon>
             &nbsp; Guau! Qué Animales
             <ion-icon name="paw"></ion-icon>
     </button>
-
   </div>
 </ion-header>
 
 <ion-content class="contenido">
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
   <ion-refresher-content></ion-refresher-content>
 </ion-refresher>
-  <ion-card *ngFor="let perro of _ps.perros"
-            block>
+
+  <ion-card *ngFor="let perro of _ps.perros" block>
       <img [src]="perro.image"(click)="vista (perro)"/>
+
     <ion-card-content class="contenido-card">
+
       <ion-card-title class="blanco">
         {{perro.name}} ({{perro.race}})
         </ion-card-title>
+
         Edad:&nbsp;{{perro.age}}<br>
         <button class="dropst"
-                        ion-button small
-                        (click)="showStory()">
-                        Historia <ion-icon name="arrow-down"></ion-icon>
+                ion-button small
+                (click)="showStory()">
+                Historia <ion-icon name="arrow-down"></ion-icon>
         </button>
+
         <div *ngIf="story">
         {{perro.description}}
         </div>
+
     </ion-card-content>
   </ion-card>
 </ion-content>

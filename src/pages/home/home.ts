@@ -10,8 +10,10 @@ import { LoadingController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  //Declaraciones
   story=false;
   newperros:any[]=[];
+
   constructor(public navCtrl:NavController,
     public navParams: NavParams,
     public http: Http,
@@ -19,18 +21,20 @@ export class HomePage {
     private _ps:PerrosService,
     public loadingController:LoadingController) {
   }
+//Carga de los animales mediante hhtp get a la api
 cargar(){
   this.http.get("http://guauqueanimales.com/dogs/adopteds/")
             .map( resp => resp.json() )
             .subscribe( data=>{
               console.log(data);
               if(data.error){
-
               }else{
                 this.newperros.push(...data);
                 this._ps.perros=this.newperros;
               }})
-            }
+}
+
+  //Funcion del Refresher
   doRefresh(refresher) {
     console.log("refreshing");
     setTimeout(() => {
@@ -38,12 +42,17 @@ cargar(){
       this.cargar();
     }, 2000);
   }
+
+  //Funcion para pasar el perro clickado a la vista en detalle
   vista(perro:any){
     this.navCtrl.push(VistaPage,{'perro':perro});
   }
+
+  //Controlador del menu
   mostrarMenu(){
     this.menuCtrl.toggle();
   }
+
   showStory() {
       this.story= !this.story;
   }

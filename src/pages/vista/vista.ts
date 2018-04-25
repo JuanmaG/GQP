@@ -5,7 +5,6 @@ import {AnadirPage} from "../anadir/anadir";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
 import { EditarPage} from '../editar/editar';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @IonicPage()
 @Component({
@@ -13,12 +12,17 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: 'vista.html',
 })
 export class VistaPage {
+
+  //Declaraciones
   perro:any={};
-  contact=false;
-  story=false;
   browser=HomePage;
   anadir=AnadirPage;
-  constructor(private screenshot: Screenshot,public socialSharing: SocialSharing,public navCtrl: NavController, public navParams: NavParams,private domSanitizer: DomSanitizer) {
+
+  constructor(private screenshot: Screenshot,
+              public socialSharing: SocialSharing,
+              public navCtrl: NavController,
+              public navParams: NavParams) {
+
     console.log(navParams);
     this.perro=this.navParams.get("perro");
   }
@@ -46,14 +50,18 @@ export class VistaPage {
     });
   }
 
+  //Funcion general para cambiar de pagina
   abrirPagina(pagina:any){
     this.navCtrl.push(pagina);
   }
 
+  //Funcion para volver a la pagina anterior
   goBack() {
-    this.navCtrl.pop();
+  this.navCtrl.pop();
   }
 
+  //Funcion que comparte mediante facebook,haciendo un screenshot de la pantalla y compartiendo esa imagen y
+  //un mensaje,si se esta loggado en FB
   facebookShare() {
   this.screenshot.URI(80)
     .then((res) => {
@@ -67,13 +75,9 @@ export class VistaPage {
       alert('Screenshot failed');
       });
     }
-    contactInfo() {
-        this.contact= !this.contact;
-    }
-    showStory() {
-        this.story= !this.story;
-    }
+
     editar(perro:any){
       this.navCtrl.push(EditarPage,{'perro':perro});
     }
+
 }

@@ -16,6 +16,7 @@ export class EditarPage {
   imgPreview: string;
   perro:any={};
   public nameRaceSelected: any = null;
+  public nameGenreSelected: any = null;
   browser:HomePage;
 
   // TODO: Eliminar este listado de aquí y meterlo en un json de configuración
@@ -37,13 +38,17 @@ export class EditarPage {
     'Pastor Belga',
     'San Bernardo'
   ]
+  public genres = [
+    'Macho',
+    'Hembra',
+    'Desconocido'
+  ]
 
   constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
               public navParams: NavParams,
               public formBuilder: FormBuilder,
               private imagePicker: ImagePicker) {
-
     this.perro=this.navParams.get("perro");
 
     this.slideOneForm = formBuilder.group({
@@ -60,20 +65,23 @@ export class EditarPage {
     });
 
     this.nameRaceSelected = this.perro.race;
+    this.nameGenreSelected = this.perro.genre;
   }
 
   updateRace() {
     console.log('actualizamos raza del perro');
   }
 
-  seleccionarFoto() {
+  updateGenre(){
+    console.log('acutalizacion genero Perro');
+  }
 
+  seleccionarFoto() {
     let options:ImagePickerOptions = {
       quality:100,
       outputType: 1,
       maximumImagesCount: 1
     }
-
     this.imagePicker.getPictures(options).then((results) => {
       for (var i = 0; i < results.length; i++) {
         console.log('Image URI: ' + results[i]);
@@ -84,8 +92,8 @@ export class EditarPage {
     });
   }
 
+  //Funcion que nos permite volver a la pantalla home
   goBack() {
     this.navCtrl.popTo(HomePage);
   }
-
 }

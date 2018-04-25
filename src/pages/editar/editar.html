@@ -7,26 +7,31 @@
           <ion-icon name="paw"></ion-icon>
   </button>
 </ion-header>
+
 <ion-content>
 <div>
+
+
   <ion-item>
     <ion-label>Raza</ion-label>
     <ion-select #C okText="Aceptar" cancelText="Cancelar" (ionChange)="updateRace(C.value)">
       <ion-option *ngFor="let race of races" value="{{race}}" [selected]="race == nameRaceSelected">{{race}}</ion-option>
     </ion-select>
   </ion-item>
+
   <ion-item>
-  	<ion-label>Genero</ion-label>
-  		<ion-select interface="popover">
-        <ion-option value="z" selected>{{perro.genre}}</ion-option>
-  			<ion-option value="f">Hembra</ion-option>
-  			<ion-option value="m">Macho</ion-option>
-        <ion-option value="u">Desconocido</ion-option>
-  		</ion-select>
-	  </ion-item>
+    <ion-label>Raza</ion-label>
+    <ion-select #C okText="Aceptar" cancelText="Cancelar" (ionChange)="updateGenre(C.value)">
+      <ion-option *ngFor="let genre of genres" value="{{genre}}" [selected]="genre == nameGenreSelected">{{genre}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+
     <ion-item *ngIf="imgPreview">
       <img [src]="imgPreview"/>
     </ion-item>
+
+
 <ion-list color="black" >
     <form [formGroup]="slideOneForm">
       <button ion-button item-left block
