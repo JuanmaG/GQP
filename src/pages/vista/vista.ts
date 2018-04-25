@@ -14,7 +14,7 @@ import { EditarPage} from '../editar/editar';
 export class VistaPage {
 
   //Declaraciones
-  perro:any={};
+  perros:any={};
   browser=HomePage;
   anadir=AnadirPage;
 
