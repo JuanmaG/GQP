@@ -13,12 +13,23 @@
 <ion-list  color="black" class="formulario" >
 
     <form [formGroup]="slideOneForm">
-
+      <div *ngIf="isLoggedIn; else faceBookLogin">
         <ion-item>
-            <ion-label floating>Nombre de usuario</ion-label>
+            <ion-label floating>{{users.name}}</ion-label>
             <ion-input formControlName="firstName" type="text"></ion-input>
         </ion-item>
 
+        <ion-item>
+            <ion-label floating>users.email</ion-label>
+            <ion-input formControlName="lastName" type="password"></ion-input>
+        </ion-item>
+      </div>
+      <ng-template #facebookLogin>
+        <button ion-button icon-right (click)="login()">
+          Login with
+          <ion-icon name="logo-facebook"></ion-icon>
+        </button>
+      </ng-template>
         <ion-item>
             <ion-label floating>Password</ion-label>
             <ion-input formControlName="lastName" type="password"></ion-input>
@@ -27,20 +38,31 @@
     </form>
 </ion-list>
 
-<ion-item>
-        <button ion-button item-start
-                (click)="abrirPagina(browser)">
-                <ion-icon name="paw"></ion-icon>
-                &nbsp;Iniciar Sesion
-        </button>
 
-        <button ion-button item-end
-                (click)="login()">
+        <ng-template #notLogged>
+          <ion-item>
+            <button ion-button item-start
+                    (click)="abrirPagina(browser)">
+                    <ion-icon name="paw"></ion-icon>
+                    &nbsp;Iniciar Sesion
+            </button>
+          <button ion-button item-end
+                  (click)="login()">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                  &nbsp;Iniciar Sesion
+                  </button>
+          </ion-item>
+        </ng-template>
+
+      <div *ngIf="isLoggedIn;else notLogged">
+        <ion-item>
+          <button ion-button item-end
+                (click)="logout()">
                 <ion-icon name="logo-facebook"></ion-icon>
-                &nbsp;Iniciar sesion
+                &nbsp;Cerrar Sesion
                 </button>
-
-</ion-item>
+        </ion-item>
+      </div>
 
         <div class="pawiconcontainer">
               <img src="assets/imgs/descarga.png"/>
