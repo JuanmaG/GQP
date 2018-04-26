@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ImagePicker,ImagePickerOptions } from '@ionic-native/image-picker';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { HomePage } from '../home/home';
+import { Http } from '@angular/http';
+import { DataFinder } from '../../assets/providers/datafinder';
 
 @IonicPage()
 @Component({
@@ -18,37 +20,18 @@ export class EditarPage {
   public nameRaceSelected: any = null;
   public nameGenreSelected: any = null;
   browser:HomePage;
-
+  races=[];
+  genres=[];
   // TODO: Eliminar este listado de aquí y meterlo en un json de configuración
-  public races = [
-    'Mestizo',
-    'Rottweiler',
-    'Bulldo',
-    'Boxer',
-    'Doberman',
-    'Pastor Aleman',
-    'Mastín',
-    'Galgo',
-    'Beagle',
-    'Caniche',
-    'Chihuahua',
-    'Husky Siberiano',
-    'ChowChow',
-    'Yorkshire',
-    'Pastor Belga',
-    'San Bernardo'
-  ]
-  public genres = [
-    'Macho',
-    'Hembra',
-    'Desconocido'
-  ]
 
   constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
               public navParams: NavParams,
               public formBuilder: FormBuilder,
-              private imagePicker: ImagePicker) {
+              private imagePicker: ImagePicker,
+              public http: Http,
+              private dataFinder:DataFinder) {
+
     this.perro=this.navParams.get("perro");
 
     this.slideOneForm = formBuilder.group({
@@ -63,11 +46,20 @@ export class EditarPage {
       descripcion: [this.perro.description],
       edad: [this.perro.age]
     });
-
     this.nameRaceSelected = this.perro.race;
     this.nameGenreSelected = this.perro.genre;
   }
+  ionViewDidLoad() {
+    this.dataFinder.getJSONDataAsync("./assets/data/races.json").then(data => {
+      this.SetQueryOptionsData(data);
+    });
+  }
 
+  /* Sets data with returned JSON array */
+  SetQueryOptionsData(data : any) {
+    this.races = data.races;
+    this.genres = data.genres;
+  }
   updateRace() {
     console.log('actualizamos raza del perro');
   }

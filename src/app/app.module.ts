@@ -12,6 +12,7 @@ import {VistaPage,AnadirPage,LoginPage,EditarPage,ConfigurationPage,MisanunciosP
 import { HttpModule } from '@angular/http';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import {PerrosService} from "../providers/perros";
+import {DataFinder} from "../assets/providers/datafinder";
 @NgModule({
   declarations: [
     MyApp,
@@ -47,6 +48,7 @@ import {PerrosService} from "../providers/perros";
     Screenshot,
     Facebook,
     PerrosService,
+    DataFinder,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

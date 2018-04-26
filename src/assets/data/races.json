@@ -1,0 +1,25 @@
+{
+  "races":[
+    "Mestizo",
+    "Rottweiler",
+    "Bulldog",
+    "Boxer",
+    "Doberman",
+    "Pastor Aleman",
+    "Mastín",
+    "Galgo",
+    "Beagle",
+    "Caniche",
+    "Chihuahua",
+    "Husky Siberiano",
+    "ChowChow",
+    "Yorkshire",
+    "Pastor Belga",
+    "San Bernardo"
+  ],
+    "genres":[
+      "Macho",
+      "Hembra",
+      "Desconocido"
+    ]
+}
