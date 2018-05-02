@@ -21,7 +21,7 @@ export class HomePage {
     private _ps:PerrosService,
     public loadingController:LoadingController) {
   }
-//Carga de los animales mediante hhtp get a la api
+//Carga de los animales mediante http get a la api
 cargar(){
   this.http.get("http://guauqueanimales.com/dogs/adopteds/")
             .map( resp => resp.json() )

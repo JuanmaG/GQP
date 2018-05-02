@@ -2,8 +2,8 @@
   <div>
     <button ion-button item-start large block
             icon-only
-            menuToggle>
-            <ion-icon name="menu" class="iconmenu"></ion-icon>
+            (click)="goBack()">
+            <ion-icon name="arrow-back" class="iconmenu"></ion-icon>
             &nbsp;!Guau Que Animales¡
             <ion-icon name="paw"></ion-icon>
     </button>
@@ -13,67 +13,20 @@
 <ion-content>
 
 <ion-list>
-  <ion-item-sliding class="segm">
+  <ion-item-sliding class="segm"*ngFor="let perro of _ps.perros">
 
     <ion-item>
       <ion-avatar item-start>
-        <img src="../../assets/imgs/descarga.jpeg">
+        <img [src]="perro.image">
       </ion-avatar>
-      <h2>Perro</h2>
+      <h2>{{perro.name}}</h2>
     </ion-item>
 
     <ion-item-options side="right">
-      <button ion-button>EDITAR</button>
       <button ion-button
-              color="danger">COMPARTIR</button>
-    </ion-item-options>
-
-  </ion-item-sliding>
-
-  <ion-item-sliding class="segm">
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/imgs/descarga1.jpeg">
-      </ion-avatar>
-      <h2>Perro</h2>
-    </ion-item>
-
-    <ion-item-options side="right">
-      <button ion-button>EDITAR</button>
-      <button ion-button color="danger">COMPARTIR</button>
-    </ion-item-options>
-
-  </ion-item-sliding>
-
-  <ion-item-sliding class="segm">
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/imgs/descarga.jpeg">
-      </ion-avatar>
-      <h2>Perro</h2>
-    </ion-item>
-
-    <ion-item-options side="right">
-      <button ion-button>EDITAR</button>
-      <button ion-button color="danger">COMPARTIR</button>
-    </ion-item-options>
-
-  </ion-item-sliding>
-
-  <ion-item-sliding class="segm">
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/imgs/descarga1.jpeg">
-      </ion-avatar>
-      <h2>Perro</h2>
-    </ion-item>
-
-    <ion-item-options side="right">
-      <button ion-button (click)="editar (perro)">EDITAR</button>
-      <button ion-button (click)="share"color="danger">COMPARTIR</button>
+              (click)="editar(perro)">EDITAR</button>
+      <button ion-button color="danger"
+              (click)="share()">COMPARTIR</button>
     </ion-item-options>
 
   </ion-item-sliding>

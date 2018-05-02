@@ -39,7 +39,7 @@ export class LoginPage {
     .catch(e => console.log(e));
   }
 
-  presentToast() {
+  public presentToast() {
     let toast = this.toastCtrl.create({
       message: 'Work In Progress',
       duration: 3000,
@@ -53,19 +53,19 @@ export class LoginPage {
     toast.present();
   }
   //Funcion para abrir pagina
-  abrirPagina(pagina:any){
+  public abrirPagina(pagina:any){
     this.navCtrl.push(pagina);
   }
 
   //Funcion de logout para el plugin de facebook
-  logout() {
+  public logout() {
     this.fb.logout()
       .then( res => this.isLoggedIn = false)
       .catch(e => console.log('Error logout from Facebook', e));
   }
 
   //Funcion de login con el plugin de facebook
-  login() {
+  public login() {
     this.fb.login(['public_profile', 'user_friends', 'email'])
       .then(res => {
         if(res.status === "connected") {
@@ -79,7 +79,7 @@ export class LoginPage {
   }
 
   //Funcion para conseguir datos del usuario logado
-  getUserDetail(userid) {
+  private getUserDetail(userid) {
     this.fb.api("/"+userid+"/?fields=id,email,name,picture,gender",["public_profile"])
       .then(res => {
         console.log(res);
