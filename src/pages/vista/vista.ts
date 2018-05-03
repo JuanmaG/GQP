@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import {AnadirPage} from "../anadir/anadir";
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { Screenshot } from '@ionic-native/screenshot';
 import { EditarPage} from '../editar/editar';
 
 @IonicPage()
@@ -18,8 +17,7 @@ export class VistaPage {
   browser=HomePage;
   anadir=AnadirPage;
 
-  constructor(private screenshot: Screenshot,
-              public socialSharing: SocialSharing,
+  constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
               public navParams: NavParams) {
 
@@ -60,24 +58,8 @@ export class VistaPage {
   this.navCtrl.pop();
   }
 
-  //Funcion que comparte mediante facebook,haciendo un screenshot de la pantalla y compartiendo esa imagen y
-  //un mensaje,si se esta loggado en FB
-  facebookShare() {
-  this.screenshot.URI(80)
-    .then((res) => {
-      this.socialSharing.shareViaFacebook(null, res.URI, null)
-       .then(() => {},
-         () => {
-           alert('SocialSharing failed');
-         });
-       },
-      () => {
-      alert('Screenshot failed');
-      });
-    }
-
-    editar(perro:any){
-      this.navCtrl.push(EditarPage,{'perro':perro});
-    }
+  editar(perro:any){
+    this.navCtrl.push(EditarPage,{'perro':perro});
+  }
 
 }
