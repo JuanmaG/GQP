@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { Screenshot } from '@ionic-native/screenshot';
 import { EditarPage } from '../editar/editar';
 import { Http } from '@angular/http';
 import {PerrosService}from "../../providers/perros";
@@ -13,8 +12,7 @@ export class MisanunciosPage {
 
   perro:any={};
 
-  constructor(private screenshot: Screenshot,
-              public socialSharing: SocialSharing,
+  constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
@@ -55,19 +53,4 @@ export class MisanunciosPage {
     this.navCtrl.pop();
   }
 
-//Funcion que comparte mediante facebook,haciendo un screenshot de la pantalla y compartiendo esa imagen y
-//un mensaje,si se esta loggado en FB
-  public facebookShare() {
-    this.screenshot.URI(80)
-      .then((res) => {
-        this.socialSharing.shareViaFacebook(null, res.URI, null)
-          .then(() => {},
-           () => {
-             alert('SocialSharing failed');
-           });
-         },
-        () => {
-        alert('Screenshot failed');
-        });
-      }
 }
