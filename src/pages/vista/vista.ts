@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import {AnadirPage} from "../anadir/anadir";
+import { AnadirPage } from "../anadir/anadir";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
 import { EditarPage} from '../editar/editar';
