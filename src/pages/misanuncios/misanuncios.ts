@@ -4,6 +4,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { EditarPage } from '../editar/editar';
 import { Http } from '@angular/http';
 import {PerrosService}from "../../providers/perros";
+import { Item, ItemSliding } from 'ionic-angular';
 @Component({
   selector: 'page-misanuncios',
   templateUrl: 'misanuncios.html',
@@ -11,6 +12,7 @@ import {PerrosService}from "../../providers/perros";
 export class MisanunciosPage {
 
   perro:any={};
+  activeItemSliding: ItemSliding = null;
 
   constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
@@ -53,4 +55,33 @@ export class MisanunciosPage {
     this.navCtrl.pop();
   }
 
+  //Funcion para abrir el item slider
+  openOption(itemSlide: ItemSliding, item: Item) {
+
+     if(this.activeItemSliding!==null) //No permita que haya mas dde un slide activo a la vez
+     this.closeOption();
+
+     this.activeItemSliding = itemSlide;
+
+     let swipeAmount = 250; //cantidad de slide
+     itemSlide.startSliding(swipeAmount);
+     itemSlide.moveSliding(swipeAmount);
+
+     itemSlide.setElementClass('active-options-right', true);
+     itemSlide.setElementClass('active-swipe-right', true);
+
+     item.setElementStyle('transition', null);
+     item.setElementStyle('transform', 'translate3d(-'+swipeAmount+'px, 0px, 0px)');
+
+  }
+
+  //Funcion para cerra el item slider
+  closeOption() {
+
+      if(this.activeItemSliding) {
+       this.activeItemSliding.close();
+       this.activeItemSliding = null;
+      }
+
+   }
 }

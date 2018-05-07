@@ -13,20 +13,22 @@
 <ion-content>
 
 <ion-list>
-  <ion-item-sliding class="segm"*ngFor="let perro of _ps.perros">
+  <ion-item-sliding #slidingItem class="segm"*ngFor="let perro of _ps.perros">
 
-    <ion-item>
+    <ion-item #item>
       <ion-avatar item-start>
         <img id="imageid" crossOrigin="Anonymous" [src]="perro.image">
       </ion-avatar>
       <h2>{{perro.name}}</h2>
+      <ion-icon name="more" item-end (click)="openOption(slidingItem, item)"></ion-icon>
     </ion-item>
 
-    <ion-item-options side="right">
+    <ion-item-options side="right"(click)="closeOption()">
       <button ion-button
               (click)="editar(perro)">EDITAR</button>
       <button ion-button color="danger"
               (click)="share()">COMPARTIR</button>
+              <button ion-button>ELIMINAR</button>
     </ion-item-options>
 
   </ion-item-sliding>
