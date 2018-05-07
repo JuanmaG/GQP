@@ -1,4 +1,7 @@
 export{VistaPage}from "./vista/vista";
+export{AdoptedsPage}from "./adopteds/adopteds";
+export{LostPage}from "./lost/lost";
+export{FoundPage}from "./found/found";
 export{AnadirPage}from "./anadir/anadir";
 export{LoginPage}from "./login/login";
 export{EditarPage}from "./editar/editar";

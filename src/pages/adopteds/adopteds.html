@@ -1,0 +1,34 @@
+
+<ion-content class="contenido">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+
+  <ion-card *ngFor="let perro of _ps.perros" block>
+      <img [src]="perro.image"(click)="vista (perro)"/>
+
+    <ion-card-content class="contenido-card">
+
+      <ion-card-title class="blanco">
+        {{perro.name}} ({{perro.race}})
+        </ion-card-title>
+
+        Edad:&nbsp;{{perro.age}}<br>
+        <button class="dropst"
+                ion-button small
+                (click)="showStory()">
+                Historia <ion-icon name="arrow-down"></ion-icon>
+        </button>
+
+        <div *ngIf="story">
+        {{perro.description}}
+        </div>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+<ion-content padding>
+
+</ion-content>

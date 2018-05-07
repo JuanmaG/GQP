@@ -7,15 +7,24 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { MyApp } from './app.component';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { HomePage } from '../pages/home/home';
-import {VistaPage,AnadirPage,LoginPage,EditarPage,ConfigurationPage,MisanunciosPage} from "../pages/index.paginas"
+
+import {VistaPage,AnadirPage,LoginPage,EditarPage,ConfigurationPage,MisanunciosPage,AdoptedsPage,
+LostPage,FoundPage} from "../pages/index.paginas"
+
 import { HttpModule } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
 import {PerrosService} from "../providers/perros";
+import {LostedsService} from "../providers/losteds";
+import {FindedsService} from "../providers/findeds";
 import {DataFinder} from "../assets/providers/datafinder";
+import { SuperTabsModule,SuperTabsController } from 'ionic2-super-tabs';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    AdoptedsPage,
+    FoundPage,
+    LostPage,
     VistaPage,
     AnadirPage,
     LoginPage,
@@ -26,12 +35,17 @@ import {DataFinder} from "../assets/providers/datafinder";
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    SuperTabsModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
+    AdoptedsPage,
+    LostPage,
+    FoundPage,
     VistaPage,
     AnadirPage,
     LoginPage,
@@ -46,7 +60,10 @@ import {DataFinder} from "../assets/providers/datafinder";
     SocialSharing,
     Facebook,
     PerrosService,
+    FindedsService,
+    LostedsService,
     DataFinder,
+    SuperTabsController,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

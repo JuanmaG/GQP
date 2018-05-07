@@ -9,33 +9,10 @@
     </button>
   </div>
 </ion-header>
-
-<ion-content class="contenido">
-
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-  <ion-refresher-content></ion-refresher-content>
-</ion-refresher>
-
-  <ion-card *ngFor="let perro of _ps.perros" block>
-      <img [src]="perro.image"(click)="vista (perro)"/>
-
-    <ion-card-content class="contenido-card">
-
-      <ion-card-title class="blanco">
-        {{perro.name}} ({{perro.race}})
-        </ion-card-title>
-
-        Edad:&nbsp;{{perro.age}}<br>
-        <button class="dropst"
-                ion-button small
-                (click)="showStory()">
-                Historia <ion-icon name="arrow-down"></ion-icon>
-        </button>
-
-        <div *ngIf="story">
-        {{perro.description}}
-        </div>
-
-    </ion-card-content>
-  </ion-card>
+<ion-content>
+<super-tabs id="mainTabs" selectedTabIndex="1" toolbarColor="light" toolbarBackground="dark" indicatorColor="light" badgeColor="light" [config]="{ sideMenu: 'left' }" (tabSelect)="onTabSelect($event)">
+  <super-tab [root]="page1" title="Adopciones" icon="home" id="adoptedtab"></super-tab>
+  <super-tab [root]="page2" title="Perdidos" icon="paw" id="losttab"></super-tab>
+  <super-tab [root]="page3" title="Encontrados" icon="heart" id="foundtab"></super-tab>
+</super-tabs>
 </ion-content>
