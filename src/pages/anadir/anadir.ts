@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { HomePage } from '../home/home';

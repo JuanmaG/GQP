@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController,NavParams,MenuController } from 'ionic-angular';
-import {VistaPage,AnadirPage} from "../index.paginas";
+import {VistaPage } from "../index.paginas";
 import { Http } from '@angular/http';
 import {PerrosService}from "../../providers/perros";
 import 'rxjs/add/operator/map';

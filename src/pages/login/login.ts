@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { HomePage } from '../home/home';
 import { ToastController } from 'ionic-angular';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { Facebook } from '@ionic-native/facebook';
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -19,8 +18,7 @@ export class LoginPage {
               private toastCtrl: ToastController,
               public navCtrl: NavController,
               public navParams: NavParams,
-              public formBuilder: FormBuilder,
-              private imagePicker: ImagePicker) {
+              public formBuilder: FormBuilder) {
       this.slideOneForm = formBuilder.group({
       firstName: [''],
       lastName:[''],
