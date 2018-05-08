@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HomePage } from '../home/home';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { ToastController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 @IonicPage()
@@ -18,7 +19,8 @@ export class LoginPage {
               private toastCtrl: ToastController,
               public navCtrl: NavController,
               public navParams: NavParams,
-              public formBuilder: FormBuilder) {
+              public formBuilder: FormBuilder,
+              public http: Http) {
       this.slideOneForm = formBuilder.group({
       firstName: [''],
       lastName:[''],
@@ -87,4 +89,31 @@ export class LoginPage {
         console.log(e);
       });
   }
+  
+  postRequest() {
+   var headers = new Headers();
+   headers.append("Accept", 'application/json');
+   headers.append('Content-Type', 'application/json' );
+   let options = new RequestOptions({ headers: headers });
+
+   let postParams = {
+     animal_type:1,
+     race:1,
+     profile:1,
+     state:'Adopcion',
+     name:"chuchou",
+     color:"marron",
+     genre:'Macho',
+     vaccinated:"True",
+     description:"Se ha perdido",
+     age:"1 año",
+   }
+
+   this.http.post("http://localhost:8000/nuevo_animal", postParams, options)
+     .subscribe(data => {
+       console.log(data['_body']);
+      }, error => {
+       console.log(error);// Error getting the data
+     });
+ }
 }
