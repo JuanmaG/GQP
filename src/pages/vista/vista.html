@@ -1,13 +1,21 @@
+<ion-header class="header">
+  <div>
+    <button ion-button item-start large block
+            icon-only
+            (click)="goBack()">
+           <ion-icon name="arrow-back" class="iconmenu"></ion-icon>
+            &nbsp;!Guau Que Animales¡
+            <ion-icon name="paw"></ion-icon>
+    </button>
+  </div>
+</ion-header>
 
- <ion-content class="contenido">
+<ion-content class="contenido">
 <ion-card class="cards">
 
   <ion-item class="cards">
     <ion-avatar item-start>
-      <button ion-button item-start clear large
-              (click)="goBack()">
-        <ion-icon name="arrow-back" class="iconmenu"></ion-icon>
-      </button>
+      <ion-icon name="paw" ion-icon item-start large></ion-icon>
     </ion-avatar>
     &nbsp;{{perro.name}}<br/>
     &nbsp;{{perro.race}} ({{perro.state}}, {{perro.city}}, {{perro.town}})
