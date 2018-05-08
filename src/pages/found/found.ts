@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController,MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import {VistaPage} from "../index.paginas";
 import { Http } from '@angular/http';
 import {FindedsService}from "../../providers/findeds";
@@ -15,12 +15,15 @@ export class FoundPage {
 
     story=false;
     newperros:any[]=[];
+    rootNavCtrl: NavController;
 
     constructor(public navCtrl:NavController,
       public http: Http,
       public menuCtrl:MenuController,
       private _ps:FindedsService,
-      public loadingController:LoadingController) {
+      public loadingController:LoadingController,
+      private navParams: NavParams) {
+        this.rootNavCtrl = this.navParams.get('rootNavCtrl')
     }
 
     ionViewDidLoad() {
@@ -50,8 +53,8 @@ export class FoundPage {
     }
 
     //Funcion para pasar el perro clickado a la vista en detalle
-    vista(perro:any){
-      this.navCtrl.push(VistaPage,{'perro':perro});
+    vista(perro:any) {
+      this.rootNavCtrl.push(VistaPage, {'perro': perro});
     }
 
     //Controlador del menu

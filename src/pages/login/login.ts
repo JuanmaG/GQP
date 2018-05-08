@@ -89,7 +89,7 @@ export class LoginPage {
         console.log(e);
       });
   }
-  
+
   postRequest() {
    var headers = new Headers();
    headers.append("Accept", 'application/json');
