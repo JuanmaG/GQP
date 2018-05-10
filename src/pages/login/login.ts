@@ -91,29 +91,29 @@ export class LoginPage {
   }
 
   postRequest() {
-   var headers = new Headers();
-   headers.append("Accept", 'application/json');
-   headers.append('Content-Type', 'application/json' );
-   let options = new RequestOptions({ headers: headers });
 
-   let postParams = {
-     animal_type:1,
-     race:1,
-     profile:1,
+   const postParams = {
+     animal_type:'1',
+     race:'1',
+     profile:'3',
      state:'Adopcion',
-     name:"chuchou",
-     color:"marron",
+     name:'chuchou',
+     color:'marron',
      genre:'Macho',
-     vaccinated:"True",
-     description:"Se ha perdido",
-     age:"1 año",
+     vaccinated:'True',
+     description:'Se ha perdido',
+     age:'1 año',
    }
 
-   this.http.post("http://localhost:8000/nuevo_animal", postParams, options)
-     .subscribe(data => {
-       console.log(data['_body']);
-      }, error => {
-       console.log(error);// Error getting the data
-     });
- }
+   return this.http.post("http://localhost:8000/nuevo_animal", postParams)
+    .toPromise()
+     .then(
+       (response)=>{
+         console.log("hecho");
+       },
+       (error)=> {
+         console.log("error");
+       }
+     );
+   }
 }
