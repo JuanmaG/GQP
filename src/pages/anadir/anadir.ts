@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { HomePage } from '../home/home';
+import { AuthService } from '../../providers/auth0.service';
+import { Http } from '@angular/http';
 @IonicPage({
    defaultHistory: ['browser']
 })
@@ -19,7 +21,9 @@ export class AnadirPage {
               public navCtrl: NavController,
               public navParams: NavParams,
               public formBuilder: FormBuilder,
-              private imagePicker: ImagePicker) {
+              private imagePicker: ImagePicker,
+              public http: Http,
+              private authService: AuthService) {
 
     //Creacion del form y sus campos mediante formBuilder
       this.slideOneForm = formBuilder.group({
@@ -57,5 +61,26 @@ export class AnadirPage {
   goBack() {
     this.navCtrl.pop();
   }
+  //Peticion post
+  postRequest() {
+   const url="http://127.0.0.1:8000/nuevo_animal"
 
+   let body = {
+     'animal_type':'1',
+     'race':'1',
+     'profile':'1',
+     'state':'Adopcion',
+     'name':'hafuncioncionado',
+     'color':'marron',
+     'genre':'Macho',
+     'vaccinated':'True',
+     'description':'Se ha perdido',
+     'age':'1 año',
+   };
+
+   this.http.post(url, body, this.authService.getHeaders())
+     .subscribe(data => {
+       console.log(data);
+     });
+ }
 }

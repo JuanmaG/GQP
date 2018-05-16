@@ -1,5 +1,5 @@
   import { Component } from '@angular/core';
-  import { IonicPage, NavController, NavParams } from 'ionic-angular';
+  import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
   import { FormBuilder, FormGroup } from '@angular/forms';
   import { HomePage } from '../home/home';
   import { Http, Headers, RequestOptions } from '@angular/http';
@@ -24,7 +24,8 @@
                 public navParams: NavParams,
                 public formBuilder: FormBuilder,
                 public http: Http,
-                private authService: AuthService) {
+                private authService: AuthService,
+                private menu: MenuController) {
                   this.slideOneForm = this.formBuilder.group({
                   firstName: [''],
                   lastName:[''],
@@ -42,6 +43,10 @@
         }
       })
       .catch(e => console.log(e));
+    }
+
+    public ionViewDidLoad(){
+      this.menu.swipeEnable(false);
     }
 
     public presentToast() {
@@ -88,6 +93,7 @@
       this.authService.authenticate(this.slideOneForm.controls['firstName'].value,this.slideOneForm.controls['lastName'].value);
       if(this.authService.isAuthenticated){
         this.abrirPagina(this.browser);
+        this.menu.swipeEnable(true);
       }
     }
     //Funcion para conseguir datos del usuario logado
@@ -102,27 +108,6 @@
         });
     }
 
-    //Peticion post
-    postRequest() {
-     const url="http://127.0.0.1:8000/nuevo_animal"
 
-     let body = {
-       'animal_type':'1',
-       'race':'1',
-       'profile':'1',
-       'state':'Adopcion',
-       'name':'hafuncioncionado',
-       'color':'marron',
-       'genre':'Macho',
-       'vaccinated':'True',
-       'description':'Se ha perdido',
-       'age':'1 año',
-     };
-
-     this.http.post(url, body, this.authService.getHeaders())
-       .subscribe(data => {
-         console.log(data);
-       });
-   }
 
 }
