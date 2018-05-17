@@ -14,9 +14,14 @@ import { Http } from '@angular/http';
   templateUrl: 'anadir.html',
 })
 export class AnadirPage {
+
   slideOneForm: FormGroup;
   imgPreview: string;
   browser:HomePage;
+  raza:any;
+  tipo:any;
+  sexo:any;
+
   constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
               public navParams: NavParams,
@@ -27,16 +32,12 @@ export class AnadirPage {
 
     //Creacion del form y sus campos mediante formBuilder
       this.slideOneForm = formBuilder.group({
-      firstName: [''],
-      pais: [''],
-      ciudad: [''],
-      poblacion:[''],
-      correo:[''],
-      telefono:[''],
-      lastName: [''],
+      nombre: [''],
+      color:[''],
+      vacc:[''],
       weight:[''],
       descripcion: [''],
-      edad: ['']
+      age: ['']
     });
   }
 
@@ -59,6 +60,7 @@ export class AnadirPage {
 
 //Funcion para volver a la pagina anterior
   goBack() {
+    console.log(this.raza);
     this.navCtrl.pop();
   }
   //Peticion post
@@ -67,15 +69,15 @@ export class AnadirPage {
 
    let body = {
      'animal_type':'1',
-     'race':'1',
+     'race':this.raza,
      'profile':'1',
-     'state':'Adopcion',
-     'name':'hafuncioncionado',
-     'color':'marron',
-     'genre':'Macho',
-     'vaccinated':'True',
-     'description':'Se ha perdido',
-     'age':'1 año',
+     'state':this.tipo,
+     'name':this.slideOneForm.controls['nombre'].value,
+     'color':this.slideOneForm.controls['color'].value,
+     'genre':this.sexo,
+     'vaccinated':this.slideOneForm.controls['vacc'].value,
+     'description':this.slideOneForm.controls['descripcion'].value,
+     'age':this.slideOneForm.controls['age'].value,
    };
 
    this.http.post(url, body, this.authService.getHeaders())

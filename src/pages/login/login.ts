@@ -91,7 +91,8 @@
     //Funcion de login
     public genLogin(){
       this.authService.authenticate(this.slideOneForm.controls['firstName'].value,this.slideOneForm.controls['lastName'].value);
-      if(this.authService.isAuthenticated){
+      if(this.authService.authenticated){
+        console.log(this.authService.authenticated);
         this.abrirPagina(this.browser);
         this.menu.swipeEnable(true);
       }
