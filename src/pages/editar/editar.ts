@@ -6,7 +6,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { HomePage } from '../home/home';
 import { Http } from '@angular/http';
 import { DataFinder } from '../../assets/providers/datafinder';
-
+import { AuthService } from '../../providers/auth0.service';
 @IonicPage()
 @Component({
   selector: 'page-editar',
@@ -22,7 +22,6 @@ export class EditarPage {
   browser:HomePage;
   races=[];
   genres=[];
-  // TODO: Eliminar este listado de aquí y meterlo en un json de configuración
 
   constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
@@ -30,21 +29,18 @@ export class EditarPage {
               public formBuilder: FormBuilder,
               private imagePicker: ImagePicker,
               public http: Http,
-              private dataFinder:DataFinder) {
+              private dataFinder:DataFinder,
+              private authService: AuthService) {
 
     this.perro=this.navParams.get("perro");
 
     this.slideOneForm = formBuilder.group({
-      firstName: [this.perro.name],
-      pais: [this.perro.state],
-      ciudad: [this.perro.city],
-      poblacion:[this.perro.town],
-      correo:[this.perro.email],
-      telefono:[this.perro.phone],
-      lastName: [''],
+      nombre: [''],
+      color:[''],
+      vacc:[''],
       weight:[''],
-      descripcion: [this.perro.description],
-      edad: [this.perro.age]
+      descripcion: [''],
+      age: ['']
     });
     this.nameRaceSelected = this.perro.race;
     this.nameGenreSelected = this.perro.genre;
@@ -55,11 +51,35 @@ export class EditarPage {
     });
   }
 
+  editPost() {
+   const url="http://127.0.0.1:8000/edit_animal"
+
+   let body = {
+     'id':'1',
+     'animal_type':'1',
+     'race':'1',
+     'profile':'1',
+     'state':'Adopcion',
+     'name':this.slideOneForm.controls['nombre'].value,
+     'color':this.slideOneForm.controls['color'].value,
+     'genre':'Hembra',
+     'vaccinated':this.slideOneForm.controls['vacc'].value,
+     'description':this.slideOneForm.controls['descripcion'].value,
+     'age':this.slideOneForm.controls['age'].value,
+   };
+
+   this.http.post(url, body, this.authService.getHeaders())
+     .subscribe(data => {
+       console.log(data);
+     });
+ }
+
   /* Sets data with returned JSON array */
   SetQueryOptionsData(data : any) {
     this.races = data.races;
     this.genres = data.genres;
   }
+
   updateRace() {
     console.log('actualizamos raza del perro');
   }

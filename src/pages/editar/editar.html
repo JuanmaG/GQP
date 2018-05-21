@@ -20,7 +20,7 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>Raza</ion-label>
+    <ion-label>Genero</ion-label>
     <ion-select #C okText="Aceptar" cancelText="Cancelar" (ionChange)="updateGenre(C.value)">
       <ion-option *ngFor="let genre of genres" value="{{genre}}" [selected]="genre == nameGenreSelected">{{genre}}</ion-option>
     </ion-select>
@@ -40,40 +40,32 @@
               &nbsp;Seleccionar
         </button>
         <ion-item>
-            <ion-label floating>Edad</ion-label>
-            <ion-input formControlName="edad" type="text"></ion-input>
+            <ion-label floating>Nombre</ion-label>
+            <ion-input formControlName="nombre" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>Pais</ion-label>
-            <ion-input formControlName="pais" type="text"></ion-input>
+            <ion-label floating>Color</ion-label>
+            <ion-input formControlName="color" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>Ciudad</ion-label>
-            <ion-input formControlName="ciudad" type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Poblacion</ion-label>
-            <ion-input formControlName="poblacion" type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Correo Electrónico</ion-label>
-            <ion-input formControlName="correo" type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Teléfono de Contacto</ion-label>
-            <ion-input formControlName="telefono" type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label floating>Nombre del perro</ion-label>
-            <ion-input formControlName="firstName" type="text"></ion-input>
+            <ion-label floating>Vacunado</ion-label>
+            <ion-input formControlName="vacc" type="text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label floating>Peso</ion-label>
             <ion-input formControlName="weight" type="number"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>Historia</ion-label>
-            <ion-textarea class="txtarea" formControlName="descripcion" type="text"></ion-textarea>
+        <ion-label floating>edad</ion-label>
+        <ion-input formControlName="age" type="number"></ion-input>
         </ion-item>
-    </form>
-</ion-list>
+        <ion-item>
+            <ion-label floating>Historia</ion-label>
+            <ion-textarea formControlName="descripcion" type="text"></ion-textarea>
+        </ion-item>
+        </form>
+        <button ion-button block (click)="editPost()">
+          submit
+        <ion-icon name="checkmark-circle"></ion-icon>
+        </button>
+        </ion-list>

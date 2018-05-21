@@ -33,7 +33,7 @@ export class AdoptedsPage {
 
   //Carga de los animales mediante http get a la api
   cargar(){
-    this.http.get("http://guauqueanimales.com/dogs/adopteds/")
+    this.http.get("http://127.0.0.1:8000/animal")
               .map( resp => resp.json() )
               .subscribe( data=>{
                 console.log(data);
