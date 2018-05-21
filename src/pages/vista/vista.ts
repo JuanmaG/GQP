@@ -4,7 +4,8 @@ import { HomePage } from '../home/home';
 import { AnadirPage } from "../anadir/anadir";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { EditarPage} from '../editar/editar';
-
+import { Http } from '@angular/http';
+import { AuthService } from '../../providers/auth0.service';
 @IonicPage()
 @Component({
   selector: 'page-vista',
@@ -19,7 +20,9 @@ export class VistaPage {
 
   constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              private authService: AuthService,
+              private http: Http) {
 
     console.log(navParams);
     this.perro=this.navParams.get("perro");
@@ -61,5 +64,16 @@ export class VistaPage {
   editar(perro:any){
     this.navCtrl.push(EditarPage,{'perro':perro});
   }
+  delete() {
+   const url="http://127.0.0.1:8000/delete_animal"
 
+   let body = {
+     'id':this.perro.id
+   };
+
+   this.http.post(url, body, this.authService.getHeaders())
+     .subscribe(data => {
+       console.log(data);
+     });
+ }
 }

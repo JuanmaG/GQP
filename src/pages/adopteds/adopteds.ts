@@ -58,6 +58,9 @@ export class AdoptedsPage {
     this.rootNavCtrl.push(VistaPage, {'perro': perro});
   }
 
+  delete(){
+    
+  }
   //Controlador del menu
   mostrarMenu(){
     this.menuCtrl.toggle();
