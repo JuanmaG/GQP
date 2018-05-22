@@ -7,6 +7,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { MyApp } from './app.component';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { HomePage } from '../pages/home/home';
+import { EmailComposer } from '@ionic-native/email-composer';
+
 
 import {VistaPage,AnadirPage,LoginPage,EditarPage,ConfigurationPage,MisanunciosPage,AdoptedsPage,
 LostPage,FoundPage} from "../pages/index.paginas"
@@ -69,6 +71,7 @@ import { SuperTabsModule,SuperTabsController } from 'ionic2-super-tabs';
     AuthService,
     DataFinder,
     SuperTabsController,
+    EmailComposer,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

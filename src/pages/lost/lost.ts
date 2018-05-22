@@ -5,6 +5,8 @@ import { Http } from '@angular/http';
 import {LostedsService}from "../../providers/losteds";
 import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
+import { EmailComposer } from '@ionic-native/email-composer';
+
 @IonicPage()
 @Component({
   selector: 'page-lost',
@@ -21,7 +23,8 @@ export class LostPage {
       public menuCtrl:MenuController,
       private _ps:LostedsService,
       public loadingController:LoadingController,
-      private navParams: NavParams) {
+      private navParams: NavParams,
+      private emailComposer: EmailComposer) {
         this.rootNavCtrl = this.navParams.get('rootNavCtrl')
       }
 
@@ -66,5 +69,45 @@ export class LostPage {
     showStory() {
         this.story= !this.story;
     }
+
+    sendEmail(
+               to         : string,
+               cc         : string,
+               bcc        : string,
+               attachment : string,
+               subject    : string,
+               body       : string) : void
+      {
+
+        this.emailComposer.isAvailable()
+        .then((available: boolean) =>
+        {
+
+           this.emailComposer.hasPermission()
+           .then((isPermitted : boolean) =>
+           {
+
+              let email : any = {
+                 app 			: 'jgarridolechuga@gmail.com',
+                 to 			: 'jgarridolechuga@gmail.com',
+                 cc 			: 'jgarridolechuga@gmail.com',
+                 bcc 			: 'jgarridolechuga@gmail.com',
+                 subject 	: 'report',
+                 body 		: 'report'
+              };
+              this.emailComposer.open(email);
+           })
+           .catch((error : any) =>
+           {
+              console.log('No access permission granted');
+              console.dir(error);
+           });
+        })
+        .catch((error : any) =>
+        {
+           console.log('Parece ser que el usuario no tiene una cuenta de email configurada');
+           console.dir(error);
+        });
+     }
 
   }

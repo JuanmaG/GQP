@@ -18,6 +18,11 @@
                 (click)="showStory()">
                 Historia <ion-icon name="arrow-down"></ion-icon>
         </button>
+        <button class="dropst"
+                ion-button small
+                (click)="sendEmail()">
+                Reportar
+        </button>
 
         <div *ngIf="story">
         {{perro.description}}
