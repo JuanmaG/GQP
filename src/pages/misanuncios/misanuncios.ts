@@ -5,6 +5,7 @@ import { EditarPage } from '../editar/editar';
 import { Http } from '@angular/http';
 import {PerrosService}from "../../providers/perros";
 import { Item, ItemSliding } from 'ionic-angular';
+import { AuthService } from '../../providers/auth0.service';
 @Component({
   selector: 'page-misanuncios',
   templateUrl: 'misanuncios.html',
@@ -18,6 +19,7 @@ export class MisanunciosPage {
               public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
+              private authService: AuthService,
               private _ps:PerrosService) {
   }
 
@@ -84,4 +86,17 @@ export class MisanunciosPage {
       }
 
    }
+
+   delete(perrete:any) {
+    const url="http://127.0.0.1:8000/delete_animal"
+
+    let body = {
+      'id':perrete.id
+    };
+
+    this.http.post(url, body, this.authService.getHeaders())
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
 }
