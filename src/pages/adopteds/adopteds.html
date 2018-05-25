@@ -5,7 +5,7 @@
 </ion-refresher>
 
   <ion-card *ngFor="let perro of _ps.perros" block>
-      <img [src]="perro.image"(click)="vista (perro)"/>
+      <img src="http://127.0.0.1:8000/imagen?animal_id={{perro.id}}"(click)="vista (perro)"/>
 
     <ion-card-content class="contenido-card">
 

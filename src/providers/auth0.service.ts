@@ -14,9 +14,7 @@ export class AuthService {
   constructor(private http: Http) {
 
     const token = this.getAccessToken();
-      if (token) {
-        this.authenticated = true;
-    }
+
   }
 
   isAuthenticated() {
@@ -47,6 +45,7 @@ export class AuthService {
       (error) => {
         const error2 = 'Usuario o contraseña incorrectos';
         console.log(JSON.stringify(error2));
+        this.authenticated=false;
         return Promise.reject(error2);
       }
     );

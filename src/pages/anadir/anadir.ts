@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
@@ -15,12 +15,16 @@ import { Http } from '@angular/http';
 })
 export class AnadirPage {
 
+  form: FormGroup;
+  loading: boolean = false;
+
   slideOneForm: FormGroup;
   imgPreview: string;
   browser:HomePage;
   raza:any;
   tipo:any;
   sexo:any;
+@ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
@@ -30,17 +34,24 @@ export class AnadirPage {
               public http: Http,
               private authService: AuthService) {
 
+      this.createForm()
     //Creacion del form y sus campos mediante formBuilder
-      this.slideOneForm = formBuilder.group({
-      nombre: [''],
-      color:[''],
-      vacc:[''],
-      weight:[''],
-      descripcion: [''],
-      age: ['']
-    });
-  }
 
+  }
+  onFileChange(event) {
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.slideOneForm.get('imagen').setValue({
+          filename: file.name,
+          filetype: file.type,
+          value: reader.result.split(',')[1]
+        })
+      };
+    }
+  }
   //Funcion que nos permite seleccionar una foto con el componente imagePicker
   seleccionarFoto(){
     let options:ImagePickerOptions = {
@@ -58,6 +69,28 @@ export class AnadirPage {
     });
   }
 
+  createForm() {
+    this.slideOneForm = this.formBuilder.group({
+    nombre: [''],
+    color:[''],
+    vacc:[''],
+    weight:[''],
+    descripcion: [''],
+    age: [''],
+    imagen:null
+  });
+  }
+
+  onSubmit() {
+  const formModel = this.slideOneForm.value;
+  this.loading = true;
+  this.postRequest()
+  setTimeout(() => {
+    console.log(formModel);
+    alert('done!');
+    this.loading = false;
+  }, 1000);
+}
 //Funcion para volver a la pagina anterior
   goBack() {
     console.log(this.raza);
@@ -78,6 +111,7 @@ export class AnadirPage {
      'vaccinated':this.slideOneForm.controls['vacc'].value,
      'description':this.slideOneForm.controls['descripcion'].value,
      'age':this.slideOneForm.controls['age'].value,
+     'image':this.slideOneForm.controls['imagen'].value,
    };
 
    this.http.post(url, body, this.authService.getHeaders())

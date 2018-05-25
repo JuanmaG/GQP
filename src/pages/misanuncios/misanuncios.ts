@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { EditarPage } from '../editar/editar';
 import { Http } from '@angular/http';
 import {PerrosService}from "../../providers/perros";
 import { Item, ItemSliding } from 'ionic-angular';
 import { AuthService } from '../../providers/auth0.service';
+import { Component } from '@angular/core';
+import { LoadingController } from 'ionic-angular';
+
+@IonicPage()
 @Component({
   selector: 'page-misanuncios',
   templateUrl: 'misanuncios.html',
@@ -14,16 +17,29 @@ export class MisanunciosPage {
 
   perro:any={};
   activeItemSliding: ItemSliding = null;
+  user:any={};
+  id:string;
 
   constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
               public navParams: NavParams,
               public http: Http,
               private authService: AuthService,
-              private _ps:PerrosService) {
+              private _ps:PerrosService,
+              public loadingController: LoadingController) {
+              this.userDetails();
   }
 
+  checkLink(perro:any){
+    if(perro.profile == this.id){
+      
+      return true;
 
+    }
+    else{
+      return false;
+    }
+  }
   private toDataUrl(url, callback) {
       var xhr = new XMLHttpRequest();
       xhr.onload = function() {
@@ -87,6 +103,24 @@ export class MisanunciosPage {
 
    }
 
+   userDetails(){
+     let loader = this.loadingController.create({
+           content: "Loading please wait"
+         });
+     loader.present();
+     this.http.get("http://127.0.0.1:8000/user/", this.authService.getHeaders())
+                .map( resp => resp.json() )
+                .subscribe( data=>{
+                  console.log(data);
+                  if(data.error){
+
+                  }else{
+                    this.id=data[0].id;
+                    console.log(this.id)
+                  }
+                });
+                loader.dismiss();
+   }
    delete(perrete:any) {
     const url="http://127.0.0.1:8000/delete_animal"
 

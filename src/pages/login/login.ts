@@ -90,8 +90,9 @@
 
     //Funcion de login
     public genLogin(){
+      console.log(this.authService.authenticated);
       this.authService.authenticate(this.slideOneForm.controls['firstName'].value,this.slideOneForm.controls['lastName'].value);
-      if(this.authService.authenticated || this.slideOneForm.controls['firstName'].value=='pepa'){
+      if(this.authService.authenticated){
         console.log(this.authService.authenticated);
         this.abrirPagina(this.browser);
         this.menu.swipeEnable(true);
@@ -108,6 +109,24 @@
           console.log(e);
         });
     }
+
+    registRequest() {
+       const url="http://127.0.0.1:8000/registro"
+
+       let body = {
+         'username':'pruebaso',
+         'password':'123',
+         'email':'sdaasfa@gmail.com',
+         'first_name':'prueba',
+         'last_name':'prueba',
+         'city':'1'
+       };
+
+       this.http.post(url, body)
+         .subscribe(data => {
+           console.log(data);
+         });
+     }
 
 
 

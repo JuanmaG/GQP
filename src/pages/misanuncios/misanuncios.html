@@ -13,11 +13,11 @@
 <ion-content>
 
 <ion-list>
-  <ion-item-sliding #slidingItem class="segm"*ngFor="let perro of _ps.perros">
+  <ion-item-sliding #slidingItem class="segm" *ngFor="let perro of _ps.perros">
 
-    <ion-item #item>
+    <ion-item #item *ngIf="checkLink(perro)">
       <ion-avatar item-start>
-        <img id="imageid" crossOrigin="Anonymous" [src]="perro.image">
+        <img id="imageid" crossOrigin="Anonymous" src="http://127.0.0.1:8000/imagen?animal_id={{perro.id}}">
       </ion-avatar>
       <h2>{{perro.name}}</h2>
       <ion-icon name="more" item-end (click)="openOption(slidingItem, item)"></ion-icon>

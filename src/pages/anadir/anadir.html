@@ -53,11 +53,9 @@
     </ion-item>
 <ion-list color="black">
     <form [formGroup]="slideOneForm">
-      <button ion-button item-left block
-              (click)="seleccionarFoto()">
-              <ion-icon name="photos"></ion-icon>
-              &nbsp;Seleccionar
-        </button>
+
+          <input type="file" id="imagen" (change)="onFileChange($event)" #fileInput>
+
         <ion-item>
             <ion-label floating>Nombre</ion-label>
             <ion-input formControlName="nombre" type="text"></ion-input>
@@ -83,7 +81,7 @@
             <ion-textarea formControlName="descripcion" type="text"></ion-textarea>
         </ion-item>
     </form>
-    <button ion-button block (click)="postRequest()">
+    <button ion-button block (click)="onSubmit()">
       submit
       <ion-icon name="checkmark-circle"></ion-icon>
     </button>
