@@ -6,6 +6,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { EditarPage} from '../editar/editar';
 import { Http } from '@angular/http';
 import { AuthService } from '../../providers/auth0.service';
+import { DetailService } from '../../providers/userdetails';
 @IonicPage()
 @Component({
   selector: 'page-vista',
@@ -22,10 +23,22 @@ export class VistaPage {
               public navCtrl: NavController,
               public navParams: NavParams,
               private authService: AuthService,
-              private http: Http) {
+              private http: Http,
+              private _udet:DetailService) {
 
+              this._udet.load();
+              
     console.log(navParams);
     this.perro=this.navParams.get("perro");
+  }
+  checkLink(perro:any){
+
+    if(perro.profile == this._udet.id){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   private toDataUrl(url, callback) {

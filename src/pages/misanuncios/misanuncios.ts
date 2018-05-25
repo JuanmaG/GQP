@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import {PerrosService}from "../../providers/perros";
 import { Item, ItemSliding } from 'ionic-angular';
 import { AuthService } from '../../providers/auth0.service';
+import { DetailService } from '../../providers/userdetails';
 import { Component } from '@angular/core';
 import { LoadingController } from 'ionic-angular';
 
@@ -26,20 +27,21 @@ export class MisanunciosPage {
               public http: Http,
               private authService: AuthService,
               private _ps:PerrosService,
-              public loadingController: LoadingController) {
-              this.userDetails();
+              public loadingController: LoadingController,
+              private _udet: DetailService) {
+                this._udet.load();
   }
-
+  //Funcion para comprobar que un perro pertenece al usuario actual
   checkLink(perro:any){
-    if(perro.profile == this.id){
-      
-      return true;
 
+    if(perro.profile == this._udet.id){
+      return true;
     }
     else{
       return false;
     }
   }
+
   private toDataUrl(url, callback) {
       var xhr = new XMLHttpRequest();
       xhr.onload = function() {
@@ -103,24 +105,7 @@ export class MisanunciosPage {
 
    }
 
-   userDetails(){
-     let loader = this.loadingController.create({
-           content: "Loading please wait"
-         });
-     loader.present();
-     this.http.get("http://127.0.0.1:8000/user/", this.authService.getHeaders())
-                .map( resp => resp.json() )
-                .subscribe( data=>{
-                  console.log(data);
-                  if(data.error){
 
-                  }else{
-                    this.id=data[0].id;
-                    console.log(this.id)
-                  }
-                });
-                loader.dismiss();
-   }
    delete(perrete:any) {
     const url="http://127.0.0.1:8000/delete_animal"
 

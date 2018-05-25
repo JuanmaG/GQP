@@ -19,6 +19,7 @@ import { Facebook } from '@ionic-native/facebook';
 import {PerrosService} from "../providers/perros";
 import {LostedsService} from "../providers/losteds";
 import {FindedsService} from "../providers/findeds";
+import {DetailService} from "../providers/userdetails";
 
 import { AuthService } from '../providers/auth0.service';
 
@@ -66,6 +67,7 @@ import { SuperTabsModule,SuperTabsController } from 'ionic2-super-tabs';
     SocialSharing,
     Facebook,
     PerrosService,
+    DetailService,
     FindedsService,
     LostedsService,
     AuthService,

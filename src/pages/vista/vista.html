@@ -21,7 +21,7 @@
     &nbsp;{{perro.animal_type}} ({{perro.race}}, {{perro.state}}, {{perro.profile}})
   </ion-item>
 <div class="imgp">
-  <img id="imageid" crossOrigin="Anonymous" [src]="perro.image"  >
+  <img id="imageid" crossOrigin="Anonymous" src="http://127.0.0.1:8000/imagen?animal_id={{perro.id}}"  >
 </div>
   <ion-card-content>
     <p class="cards">Nombre: {{perro.name}}</p>
@@ -39,12 +39,12 @@
       </button>
     </ion-col>
 
-    <ion-col>
+    <ion-col *ngIf="checkLink(this.perro)">
       <button ion-button large (click)="editar (perro)">
         <ion-icon name="brush"></ion-icon>
       </button>
     </ion-col>
-    <ion-col>
+    <ion-col *ngIf="checkLink(this.perro)">
       <button ion-button large (click)="delete(perro)">
         <ion-icon name="checkmark-circle"></ion-icon>
       </button>
