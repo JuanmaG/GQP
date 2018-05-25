@@ -14,7 +14,9 @@ export class AuthService {
   constructor(private http: Http) {
 
     const token = this.getAccessToken();
-
+      if(token){
+        this.authenticated=true;
+      }
   }
 
   isAuthenticated() {
