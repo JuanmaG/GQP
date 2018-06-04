@@ -35,14 +35,13 @@ export class AdoptedsPage {
 
   //Carga de los animales mediante http get a la api
   cargar(){
-    this.http.get("http://127.0.0.1:8000/animal?profile_id=2")
+    this.http.get("http://127.0.0.1:8000/animal/")
               .map( resp => resp.json() )
               .subscribe( data=>{
                 console.log(data);
                 if(data.error){
                 }else{
-                  this.newperros.push(...data);
-                  this._ps.perros=this.newperros;
+                  this._ps.perros.push(...data);
                 }})
   }
 
@@ -50,8 +49,8 @@ export class AdoptedsPage {
   doRefresh(refresher) {
     console.log("refreshing");
     setTimeout(() => {
-      refresher.complete();
       this.cargar();
+      refresher.complete();
     }, 2000);
   }
 

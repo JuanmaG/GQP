@@ -1,14 +1,16 @@
 page-vista {
 
   .cards{
-      background-color: purple;
-      color: white;
+      background-color: orange;
+      font-style: italic;
+      font-weight: bold;
+      color: black;
   }
   .dropdb{
       position: relative;
       text-align: center;
-      background-color: purple;
-      color: white;
+      background-color: yellow;
+      color: black;
   }
   .imgp{
     height: 100%;
@@ -19,7 +21,7 @@ page-vista {
     text-align: center;
     right: 0;
     left: auto;
-    background-color: purple;
+    background-color: orange;
   }
-  
+
 }

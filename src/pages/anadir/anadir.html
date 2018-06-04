@@ -13,10 +13,10 @@
   <ion-item>
     <ion-label>Tipo de Anuncio</ion-label>
     <ion-select [(ngModel)]="tipo">
-      <ion-option value="1">En Adopcion</ion-option>
-      <ion-option value="2">Encontrado</ion-option>
-      <ion-option value="3">En Acogida</ion-option>
-      <ion-option value="4">Perdido</ion-option>
+      <ion-option value="Adopcion">En Adopcion</ion-option>
+      <ion-option value="Encontrado">Encontrado</ion-option>
+      <ion-option value="Acogida">En Acogida</ion-option>
+      <ion-option value="Perdido">Perdido</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>
@@ -43,9 +43,9 @@
   <ion-item>
   	<ion-label>Sexo</ion-label>
   		<ion-select [(ngModel)]="sexo" interface="popover">
-  			<ion-option value="f">Hembra</ion-option>
-  			<ion-option value="m">Macho</ion-option>
-        <ion-option value="u">Desconocido</ion-option>
+  			<ion-option value="Hembra">Hembra</ion-option>
+  			<ion-option value="Macho">Macho</ion-option>
+        <ion-option value="Desconocido">Desconocido</ion-option>
   		</ion-select>
 	  </ion-item>
     <ion-item *ngIf="imgPreview">
@@ -66,7 +66,10 @@
         </ion-item>
         <ion-item>
             <ion-label floating>Vacunado</ion-label>
-            <ion-input formControlName="vacc" type="text"></ion-input>
+            <ion-select formControlName="vacc"[(ngModel)]="vaccinated" interface="popover">
+              <ion-option value="True">Si</ion-option>
+              <ion-option value="False">No</ion-option>
+            </ion-select>
         </ion-item>
         <ion-item>
             <ion-label floating>Peso</ion-label>

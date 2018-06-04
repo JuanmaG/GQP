@@ -1,12 +1,13 @@
 
 
-<ion-content class="contenido">
+<ion-content class="header">
   <ion-refresher (ionRefresh)="doRefresh($event)">
   <ion-refresher-content></ion-refresher-content>
 </ion-refresher>
 
   <ion-card *ngFor="let perro of _ps.perros" block>
-      <img [src]="perro.image"(click)="vista (perro)"/>
+    <ion-item *ngIf="perro.state == 'Perdido'" class="contenido">
+      <img src="http://127.0.0.1:8000/imagen?animal_id={{perro.id}}"(click)="vista (perro)"/>
 
     <ion-card-content class="contenido-card">
 
@@ -23,7 +24,7 @@
         <button class="dropst"
                 ion-button small
                 (click)="sendEmail()">
-                Reportar 
+                Reportar
         </button>
 
 
@@ -32,5 +33,4 @@
         </div>
 
     </ion-card-content>
-  </ion-card>
-</ion-content>
+</ion-item>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController,NavParams,MenuController } from 'ionic-angular';
 import {VistaPage} from "../index.paginas";
 import { Http } from '@angular/http';
-import {LostedsService}from "../../providers/losteds";
+import {PerrosService}from "../../providers/perros";
 import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { EmailComposer } from '@ionic-native/email-composer';
@@ -21,7 +21,7 @@ export class LostPage {
     constructor(public navCtrl:NavController,
       public http: Http,
       public menuCtrl:MenuController,
-      private _ps:LostedsService,
+      private _ps:PerrosService,
       public loadingController:LoadingController,
       private navParams: NavParams,
       private emailComposer: EmailComposer) {
@@ -35,7 +35,7 @@ export class LostPage {
 
     //Carga de los animales mediante http get a la api
     cargar(){
-      this.http.get("http://guauqueanimales.com/dogs/losteds/")
+      this.http.get("http://127.0.0.1:8000/animal/")
                 .map( resp => resp.json() )
                 .subscribe( data=>{
                   console.log(data);

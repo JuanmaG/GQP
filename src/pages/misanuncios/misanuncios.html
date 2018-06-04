@@ -10,12 +10,12 @@
   </div>
 </ion-header>
 
-<ion-content>
+<ion-content class="header">
 
 <ion-list>
-  <ion-item-sliding #slidingItem class="segm" *ngFor="let perro of _ps.perros">
+  <ion-item-sliding #slidingItem class="segm" *ngFor="let perro of _ps.perros" class="sliders">
 
-    <ion-item #item *ngIf="checkLink(perro)">
+    <ion-item #item *ngIf="checkLink(perro)" class="sliders">
       <ion-avatar item-start>
         <img id="imageid" crossOrigin="Anonymous" src="http://127.0.0.1:8000/imagen?animal_id={{perro.id}}">
       </ion-avatar>
