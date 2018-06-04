@@ -1,6 +1,10 @@
 <ion-content class="header">
   <ion-refresher (ionRefresh)="doRefresh($event)">
-  <ion-refresher-content></ion-refresher-content>
+  <ion-refresher-content    pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+  </ion-refresher-content>
 </ion-refresher>
 
   <ion-card *ngFor="let perro of _ps.perros" block>

@@ -2,8 +2,10 @@
 
 <ion-content class="header">
   <ion-refresher (ionRefresh)="doRefresh($event)">
-  <ion-refresher-content></ion-refresher-content>
-</ion-refresher>
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
 
   <ion-card *ngFor="let perro of _ps.perros" block>
     <ion-item *ngIf="perro.state == 'Perdido'" class="contenido">
@@ -33,4 +35,5 @@
         </div>
 
     </ion-card-content>
+
 </ion-item>

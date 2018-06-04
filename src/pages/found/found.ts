@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import {PerrosService}from "../../providers/perros";
 import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
+import { AuthService } from '../../providers/auth0.service';
 import { EmailComposer } from '@ionic-native/email-composer';
 
 @IonicPage()
@@ -24,17 +25,14 @@ export class FoundPage {
       private _ps:PerrosService,
       public loadingController:LoadingController,
       private navParams: NavParams,
+      private authService: AuthService,
       private emailComposer: EmailComposer) {
         this.rootNavCtrl = this.navParams.get('rootNavCtrl')
     }
 
-    ionViewDidLoad() {
-      console.log('ionViewDidLoad AdoptedsPage');
-    }
-
     //Carga de los animales mediante http get a la api
     cargar(){
-      this.http.get("http://127.0.0.1:8000/animal/")
+    this.http.get("http://127.0.0.1:8000/animal/", this.authService.getHeaders())
                 .map( resp => resp.json() )
                 .subscribe( data=>{
                   console.log(data);

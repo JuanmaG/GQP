@@ -1,8 +1,10 @@
 
 <ion-content class="header">
   <ion-refresher (ionRefresh)="doRefresh($event)">
-  <ion-refresher-content></ion-refresher-content>
-</ion-refresher>
+    <ion-refresher-content>
+
+    </ion-refresher-content>
+  </ion-refresher>
 
   <ion-card *ngFor="let perro of _ps.perros" >
     <ion-item *ngIf="perro.state == 'Adopcion'" class="contenido">
