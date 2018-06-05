@@ -21,7 +21,8 @@ load(){
              .subscribe( data=>{
                console.log(data);
                if(data.error){
-
+                 console.log(data.perro)
+                 this.id=data['0']
                }else{
                  this.id=data[0].id;
                  console.log(this.id)

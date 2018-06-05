@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DataFinder } from '../../assets/providers/datafinder';
+import { FiltersService } from '../../providers/filters';
 
 @IonicPage()
 @Component({
@@ -14,25 +15,62 @@ export class ConfigurationPage {
   genres=[];
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private dataFinder:DataFinder,) {
+              private dataFinder:DataFinder,
+              public filters:FiltersService) {
 
   }
   ionViewDidLoad(){
       this.dataFinder.getJSONDataAsync("./assets/data/races.json").then(data => {
       this.SetQueryOptionsData(data);
   });}
+  applyFilter(data,extra){
+    console.log(data,extra)
+    if(data=='sexo'){
 
-  /* Sets data with returned JSON array */
-  SetQueryOptionsData(data : any) {
-    this.races = data.races;
-    this.genres = data.genres;
-  }
+      if(extra=='nofilter'){
+              this.filters.sexfilter=false;
+            }
+      if(extra!='nofilter'){
+              this.filters.sexfilter=true;
+              this.filters.type=extra;
+      }
+    }
+    
+    if(data=='raza'){
+      if(extra=='nofilter'){
+        this.filters.racefilter=false;
+      }
+      else if(extra!='nofilter'){
+        this.filters.racefilter=true;
+        this.filters.specifie=extra;
+      }
+    }
 
-  updateRace() {
-    console.log('actualizamos raza del perro');
+    if(data=='vacc'){
+      if(this.filters.vaccfilter==false){
+        this.filters.vaccfilter=true;
+      }
+      else if(this.filters.vaccfilter==true){
+        this.filters.vaccfilter=false;
+
+    }
+    else if(data=='vacc' && this.filters.vaccfilter==true){
+      this.filters.vaccfilter=false;
+      console.log('3')
+    }
   }
-  goBack() {
-    this.navCtrl.pop();
-  }
+}
+/* Sets data with returned JSON array */
+SetQueryOptionsData(data : any) {
+  this.races = data.races;
+  this.genres = data.genres;
+}
+
+updateRace() {
+  console.log('actualizamos raza del perro');
+}
+goBack() {
+  this.navCtrl.pop();
+}
 
 }

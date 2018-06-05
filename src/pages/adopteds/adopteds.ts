@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { AuthService } from '../../providers/auth0.service';
+import { FiltersService } from '../../providers/filters';
 
 @IonicPage()
 @Component({
@@ -18,6 +19,9 @@ export class AdoptedsPage {
   story=false;
   newperros:any[]=[];
   rootNavCtrl: NavController;
+  comprobadorRaza:boolean;
+  comprobadorVacuna:boolean;
+  comprobadorSexo:boolean;
 
   constructor(public navCtrl:NavController,
     public http: Http,
@@ -26,12 +30,14 @@ export class AdoptedsPage {
     public loadingController:LoadingController,
     private navParams: NavParams,
     private authService: AuthService,
+    public filters:FiltersService,
     private emailComposer: EmailComposer) {
       this.rootNavCtrl = this.navParams.get('rootNavCtrl')
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AdoptedsPage');
+
   }
 
   //Carga de los animales mediante http get a la api
@@ -49,12 +55,58 @@ export class AdoptedsPage {
   //Funcion del Refresher
   doRefresh(refresher) {
     console.log("refreshing");
+    alert(this.filters.racefilter)
     setTimeout(() => {
       this.cargar();
       refresher.complete();
     }, 2000);
   }
-
+  checkFilters(perro){
+    /*SI NO SE HAN APLICADO FILTROS*/
+    if(this.filters.racefilter==false){
+      this.comprobadorRaza=true;
+    }
+    if(this.filters.sexfilter==false){
+      this.comprobadorSexo=true;
+    }
+    if(this.filters.vaccfilter==false){
+      this.comprobadorVacuna=true;
+    }
+    /*********************************/
+    /*APLICANDO FILTROS*/
+    if(this.filters.racefilter){
+      if(perro.race==this.filters.specifie){
+        this.comprobadorRaza=true;
+      }
+      else if(perro.race!=this.filters.specifie){
+        this.comprobadorRaza=false;
+      }
+    }
+    if(this.filters.sexfilter){
+      if(perro.genre==this.filters.type){
+        this.comprobadorSexo=true;
+      }
+      else if(perro.genre!=this.filters.type){
+        this.comprobadorSexo=false;
+      }
+    }
+    if(perro.vaccinated=='True'&&this.filters.vaccfilter){
+      this.comprobadorVacuna=true;
+    }
+    else if((perro.vaccinated=='False'&&this.filters.vaccfilter==true)||(perro.vaccinated=='True'&&this.filters.vaccfilter==false)){
+      this.comprobadorVacuna=false;
+    }
+    /***********************************************************/
+    /*******SI CUMPLE LOS FILTROS*******************************/
+    if(this.comprobadorRaza && this.comprobadorSexo && this.comprobadorVacuna && perro.state=='Adopcion'){
+      return true;
+    }
+    /***********************************************************/
+    /**********************SI NO LOS CUMPLE*********************/
+    if(this.comprobadorRaza==false || this.comprobadorSexo==false || this.comprobadorVacuna==false){
+      return false;
+    }
+  }
   //Funcion para pasar el perro clickado a la vista en detalle
   vista(perro:any) {
     this.rootNavCtrl.push(VistaPage, {'perro': perro});
