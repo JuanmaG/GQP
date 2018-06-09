@@ -6,6 +6,9 @@
   import { ToastController } from 'ionic-angular';
   import { Facebook } from '@ionic-native/facebook';
   import { AuthService } from '../../providers/auth0.service';
+  import { AlertService } from '../../providers/alert.service';
+  import { ToastService } from '../../providers/toast.service';
+
   @IonicPage()
   @Component({
     selector: 'page-login',
@@ -24,6 +27,8 @@
                 public navParams: NavParams,
                 public formBuilder: FormBuilder,
                 public http: Http,
+                public toastService: ToastService,
+                public alertService: AlertService,
                 private authService: AuthService,
                 private menu: MenuController) {
                   this.slideOneForm = this.formBuilder.group({
@@ -90,14 +95,24 @@
 
     //Funcion de login
     public genLogin(){
+      let env = this;
       console.log(this.authService.authenticated);
-      this.authService.authenticate(this.slideOneForm.controls['firstName'].value,this.slideOneForm.controls['lastName'].value);
-      if(this.authService.authenticated){
-        console.log(this.authService.authenticated);
-        this.abrirPagina(this.browser);
-        this.menu.swipeEnable(true);
-      }
+      this.authService.authenticate(
+        this.slideOneForm.controls['firstName'].value,
+        this.slideOneForm.controls['lastName'].value
+      ).then((response: any) => {
+        if (this.authService.isAuthenticated()) {
+          this.abrirPagina(this.browser);
+          this.menu.swipeEnable(true);
+        } else {
+          this.toastService.show('Usuario o contraseña inválidos.');
+        }
+      })
+      .catch((error) => {
+        this.alertService.show('Error', JSON.stringify(error));
+      });
     }
+
     //Funcion para conseguir datos del usuario logado
     private getUserDetail(userid) {
       this.fb.api("/"+userid+"/?fields=id,email,name,picture,gender",["public_profile"])
