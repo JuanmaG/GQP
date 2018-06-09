@@ -16,6 +16,7 @@ LostPage,FoundPage} from "../pages/index.paginas"
 import { HttpModule } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
 
+import { ModalService } from '../providers/modal.service';
 import { ToastService } from '../providers/toast.service';
 import { AlertService } from '../providers/alert.service';
 import {PerrosService} from "../providers/perros";
@@ -71,6 +72,7 @@ import { SuperTabsModule,SuperTabsController } from 'ionic2-super-tabs';
     Facebook,
     AlertService,
     ToastService,
+    ModalService,
     PerrosService,
     DetailService,
     FindedsService,

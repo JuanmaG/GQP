@@ -3,9 +3,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { HomePage } from '../home/home';
 import { AuthService } from '../../providers/auth0.service';
 import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
+
+import { HomePage } from '../home/home';
+import { ToastService } from '../../providers/toast.service';
+import { ModalService } from '../../providers/modal.service';
+
 @IonicPage({
    defaultHistory: ['browser']
 })
@@ -17,18 +22,19 @@ export class AnadirPage {
 
   form: FormGroup;
   loading: boolean = false;
-
   slideOneForm: FormGroup;
   imgPreview: string;
   browser:HomePage;
   raza:any;
   tipo:any;
   sexo:any;
-@ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(public socialSharing: SocialSharing,
               public navCtrl: NavController,
+              public toastService: ToastService,
               public navParams: NavParams,
+              private modalService: ModalService,
               public formBuilder: FormBuilder,
               private imagePicker: ImagePicker,
               public http: Http,
@@ -71,52 +77,68 @@ export class AnadirPage {
 
   createForm() {
     this.slideOneForm = this.formBuilder.group({
-    nombre: [''],
-    color:[''],
-    vacc:[''],
-    weight:[''],
-    descripcion: [''],
-    age: [''],
-    imagen:null
-  });
+      nombre: [''],
+      color:[''],
+      vacc:[''],
+      weight:[''],
+      descripcion: [''],
+      age: [''],
+      imagen:null
+    });
   }
 
   onSubmit() {
-  const formModel = this.slideOneForm.value;
-  this.loading = true;
-  this.postRequest()
-  setTimeout(() => {
-    console.log(formModel);
-    alert('done!');
-    this.loading = false;
-  }, 1000);
-}
-//Funcion para volver a la pagina anterior
+    this.modalService.showLoading('Añadiendo tu anuncio...');
+    const formModel = this.slideOneForm.value;
+    this.loading = true;
+    console.log('1');
+    this.postRequest()
+    .then((response: any) => {
+      this.modalService.hideLoading();
+      this.loading = false;
+      this.toastService.show('Se le ha enviado un email para activar su cuenta.');
+      this.navCtrl.setRoot(HomePage); // Redirigimos a la página del listado donde pueda ver que el anuncio acaba de subirse.
+    }, (error) => {
+      this.modalService.hideLoading();
+      this.loading = false;
+      console.log(formModel);
+      this.toastService.show('Ha habido algún error en el registro. Revise los campos introducidos.');
+    });
+  }
+
+  //Funcion para volver a la pagina anterior
   goBack() {
     console.log(this.raza);
     this.navCtrl.pop();
   }
+
   //Peticion post
   postRequest() {
-   const url="http://127.0.0.1:8000/nuevo_animal"
+    const url="http://127.0.0.1:8000/nuevo_animal"
 
-   let body = {
-     'animal_type':'1',
-     'race':this.raza,
-     'profile':'1',
-     'state':this.tipo,
-     'name':this.slideOneForm.controls['nombre'].value,
-     'color':this.slideOneForm.controls['color'].value,
-     'genre':this.sexo,
-     'vaccinated':this.slideOneForm.controls['vacc'].value,
-     'description':this.slideOneForm.controls['descripcion'].value,
-     'age':this.slideOneForm.controls['age'].value,
-     'image':this.slideOneForm.controls['imagen'].value,
-   };
+    let body = {
+      'animal_type':'1',
+      'race':this.raza,
+      'profile':'1',
+      'state':this.tipo,
+      'name':this.slideOneForm.controls['nombre'].value,
+      'color':this.slideOneForm.controls['color'].value,
+      'genre':this.sexo,
+      'vaccinated':this.slideOneForm.controls['vacc'].value,
+      'description':this.slideOneForm.controls['descripcion'].value,
+      'age':this.slideOneForm.controls['age'].value,
+      'image':this.slideOneForm.controls['imagen'].value
+    };
 
-   this.http.post(url, body, this.authService.getHeaders())
-     .subscribe(data => {
-       console.log(data);
-     });
- }
+    return this.http.post(url, body, this.authService.getHeaders())
+      .toPromise()
+      .then(
+        (response) => {
+          return Promise.resolve('ok');
+        },
+        (error) => {
+          return Promise.reject(error);
+        }
+      );
+  }
 }
