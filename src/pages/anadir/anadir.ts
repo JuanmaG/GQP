@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ImagePicker,ImagePickerOptions} from '@ionic-native/image-picker';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AuthService } from '../../providers/auth0.service';
@@ -77,12 +77,12 @@ export class AnadirPage {
 
   createForm() {
     this.slideOneForm = this.formBuilder.group({
-      nombre: [''],
+      nombre: ['',Validators.required],
       color:[''],
-      vacc:[''],
-      weight:[''],
+      vacc:['',Validators.required],
+      weight:['',Validators.required],
       descripcion: [''],
-      age: [''],
+      age: ['',Validators.required],
       imagen:null
     });
   }
