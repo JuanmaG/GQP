@@ -2,6 +2,7 @@
   import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
   import { FormBuilder, FormGroup } from '@angular/forms';
   import { HomePage } from '../home/home';
+  import { RegistroPage } from '../registro/registro';
   import { Http, Headers, RequestOptions } from '@angular/http';
   import { ToastController } from 'ionic-angular';
   import { Facebook } from '@ionic-native/facebook';
@@ -16,6 +17,7 @@
   })
   export class LoginPage {
     browser=HomePage;
+    registro=RegistroPage;
     slideOneForm: FormGroup;
     isLoggedIn:boolean = false;
     users: any;
@@ -125,23 +127,6 @@
         });
     }
 
-    registRequest() {
-       const url="http://127.0.0.1:8000/registro"
-
-       let body = {
-         'username':'pruebaso',
-         'password':'123',
-         'email':'sdaasfa@gmail.com',
-         'first_name':'prueba',
-         'last_name':'prueba',
-         'city':'1'
-       };
-
-       this.http.post(url, body)
-         .subscribe(data => {
-           console.log(data);
-         });
-     }
 
 
 

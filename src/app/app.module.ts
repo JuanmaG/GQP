@@ -11,7 +11,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 
 
 import {VistaPage,AnadirPage,LoginPage,EditarPage,ConfigurationPage,MisanunciosPage,AdoptedsPage,
-LostPage,FoundPage} from "../pages/index.paginas"
+LostPage,FoundPage,RegistroPage} from "../pages/index.paginas"
 
 import { HttpModule } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
@@ -37,6 +37,7 @@ import { SuperTabsModule,SuperTabsController } from 'ionic2-super-tabs';
     FoundPage,
     LostPage,
     VistaPage,
+    RegistroPage,
     AnadirPage,
     LoginPage,
     EditarPage,
@@ -60,6 +61,7 @@ import { SuperTabsModule,SuperTabsController } from 'ionic2-super-tabs';
     VistaPage,
     AnadirPage,
     LoginPage,
+    RegistroPage,
     EditarPage,
     ConfigurationPage,
     MisanunciosPage

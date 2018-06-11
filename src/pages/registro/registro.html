@@ -1,0 +1,53 @@
+<ion-header class="header">
+ <button ion-button icon-left large block
+          icon-only
+          (click)=goBack()>
+          <ion-icon name="arrow-back" class="iconmenu"></ion-icon>
+          &nbsp;!Guau Que Animales
+          <ion-icon name="paw"></ion-icon>
+  </button>
+</ion-header>
+
+<ion-content>
+<ion-list color="black">
+    <form [formGroup]="slideOneForm">
+
+        <ion-item>
+            <ion-label floating>Nombre de Usuario</ion-label>
+            <ion-input formControlName="username" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Contraseña</ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Repita la Contraseña</ion-label>
+            <ion-input formControlName="confirmation" type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Dirección de correo electrónico</ion-label>
+            <ion-input formControlName="email" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Ciudad</ion-label>
+            <ion-input formControlName="city" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Nombre</ion-label>
+            <ion-input formControlName="firstname" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Apellidos</ion-label>
+          <ion-input formControlName="lastname" type="text"></ion-input>
+        </ion-item>
+    </form>
+    <button ion-button block (click)="onSubmit()">
+      Registrar
+      <ion-icon name="checkmark-circle"></ion-icon>
+    </button>
+</ion-list>
+
+
+<ion-content padding>
+
+</ion-content>

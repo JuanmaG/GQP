@@ -7,3 +7,4 @@ export{LoginPage}from "./login/login";
 export{EditarPage}from "./editar/editar";
 export{ConfigurationPage}from "./configuration/configuration";
 export{MisanunciosPage}from "./misanuncios/misanuncios";
+export{RegistroPage}from "./registro/registro";

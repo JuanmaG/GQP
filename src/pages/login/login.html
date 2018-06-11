@@ -38,9 +38,9 @@
                     &nbsp;Iniciar Sesion
             </button>
           <button ion-button item-end
-                  (click)="registRequest()">
-                  <ion-icon name="logo-facebook"></ion-icon>
-                  &nbsp;Iniciar Sesion
+                  (click)="abrirPagina(registro)">
+                  <ion-icon name="book"></ion-icon>
+                  &nbsp;Registrar
                   </button>
           </ion-item>
         </ng-template>
@@ -49,12 +49,13 @@
         <ion-item>
           <button ion-button item-end
                 (click)="logout()">
-                <ion-icon name="logo-facebook"></ion-icon>
+                <ion-icon name="close"></ion-icon>
                 &nbsp;Cerrar Sesion
                 </button>
         </ion-item>
       </div>
 
-        <div class="pawiconcontainer">
+
+          <ion-item class="pawiconcontainer">
               <img src="assets/imgs/descarga.png"/>
-        </div>
+          </ion-item>
