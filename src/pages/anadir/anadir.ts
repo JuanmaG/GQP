@@ -96,19 +96,17 @@ export class AnadirPage {
     .then((response: any) => {
       this.modalService.hideLoading();
       this.loading = false;
-      this.toastService.show('Se le ha enviado un email para activar su cuenta.');
+      //this.toastService.show('Se le ha enviado un email para activar su cuenta.');
       this.navCtrl.setRoot(HomePage); // Redirigimos a la página del listado donde pueda ver que el anuncio acaba de subirse.
     }, (error) => {
       this.modalService.hideLoading();
       this.loading = false;
-      console.log(formModel);
       this.toastService.show('Ha habido algún error en el registro. Revise los campos introducidos.');
     });
   }
 
   //Funcion para volver a la pagina anterior
   goBack() {
-    console.log(this.raza);
     this.navCtrl.pop();
   }
 
@@ -137,6 +135,7 @@ export class AnadirPage {
           return Promise.resolve('ok');
         },
         (error) => {
+
           return Promise.reject(error);
         }
       );

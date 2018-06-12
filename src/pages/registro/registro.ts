@@ -36,6 +36,7 @@ export class RegistroPage {
         city: ['',Validators.required]
       });
     }
+    //Request para el registro
     postRequest() {
          const url="http://127.0.0.1:8000/registro"
 
@@ -59,6 +60,8 @@ export class RegistroPage {
            }
        );
      }
+
+     //Funcion de confirmacion de contraseña
      checkFields(){
        if(this.slideOneForm.controls['password'].value == this.slideOneForm.controls['confirmation'].value){
          return true
@@ -67,6 +70,8 @@ export class RegistroPage {
         return false;
        }
      }
+
+     //Funcion coordinadora lanzada para hacer el registro
      onSubmit() {
        this.modalService.showLoading('Registrando usuario...');
        this.checkFields()
@@ -82,7 +87,9 @@ export class RegistroPage {
        }, (error) => {
          this.modalService.hideLoading();
          this.loading = false;
-         this.toastService.show('Ha habido algún error en el registro. Revise los campos introducidos.');
+         if(error.status === 409){
+           this.toastService.show('Nombre de usuario en uso vuelva a intetarlo');
+         }
        })}
        else{
          this.toastService.show('Las contraseñas no coinciden');
