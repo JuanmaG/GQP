@@ -15,47 +15,25 @@
             <ion-label floating>Login</ion-label>
             <ion-input formControlName="firstName" type="text"></ion-input>
         </ion-item>
-      <ng-template #facebookLogin>
-        <button ion-button icon-right (click)="login()">
-          Login with
-          <ion-icon name="logo-facebook"></ion-icon>
-        </button>
-      </ng-template>
         <ion-item>
             <ion-label floating>Password</ion-label>
             <ion-input formControlName="lastName" type="password"></ion-input>
         </ion-item>
 
     </form>
-</ion-list>
 
 
-        <ng-template #notLogged>
-          <ion-item>
-            <button ion-button item-start
+        <ion-list-header>
+            <button ion-button medium item-start
                     (click)="genLogin()">
                     <ion-icon name="paw"></ion-icon>
                     &nbsp;Iniciar Sesion
             </button>
-          <button ion-button item-end
+
+            <button class="buttn" ion-button medium item-end
                   (click)="abrirPagina(registro)">
                   <ion-icon name="book"></ion-icon>
-                  &nbsp;Registrar
+                  &nbsp;Registro
                   </button>
-          </ion-item>
-        </ng-template>
-
-      <div *ngIf="isLoggedIn;else notLogged">
-        <ion-item>
-          <button ion-button item-end
-                (click)="logout()">
-                <ion-icon name="close"></ion-icon>
-                &nbsp;Cerrar Sesion
-                </button>
-        </ion-item>
-      </div>
-
-
-          <ion-item class="pawiconcontainer">
-              <img src="assets/imgs/descarga.png"/>
-          </ion-item>
+          </ion-list-header>
+                              <img src="assets/imgs/descarga.png" class="pawiconcontainer">

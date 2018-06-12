@@ -88,7 +88,7 @@ export class RegistroPage {
          this.modalService.hideLoading();
          this.loading = false;
          if(error.status === 409){
-           this.toastService.show('Nombre de usuario en uso vuelva a intetarlo');
+           this.toastService.show('Nombre de usuario en uso, vuelva a intetarlo');
          }
        })}
        else{

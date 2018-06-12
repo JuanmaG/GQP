@@ -6,7 +6,11 @@ background-color: white;
   color:white;
 }
 .pawiconcontainer{
-  position:relative;
-  text-align: center;
-  left:auto;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.buttn{
+  position: relative;
+  right: 0%;
 }
