@@ -87,8 +87,8 @@ export class FoundPage {
                  to 			: 'jgarridolechuga@gmail.com',
                  cc 			: 'jgarridolechuga@gmail.com',
                  bcc 			: 'jgarridolechuga@gmail.com',
-                 subject 	: 'report',
-                 body 		: 'report'
+                 subject 	: 'Reporte',
+                 body 		: 'Este anuncio...'
               };
               this.emailComposer.open(email);
            })

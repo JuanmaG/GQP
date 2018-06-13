@@ -30,11 +30,6 @@ export class LostPage {
         this.rootNavCtrl = this.navParams.get('rootNavCtrl')
       }
 
-
-    ionViewDidLoad() {
-      console.log('ionViewDidLoad AdoptedsPage');
-    }
-
     //Carga de los animales mediante http get a la api
     cargar(){
     this.http.get("http://127.0.0.1:8000/animal/", this.authService.getHeaders())

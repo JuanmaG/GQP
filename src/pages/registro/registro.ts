@@ -17,13 +17,19 @@ export class RegistroPage {
 
   loading: boolean = false;
   slideOneForm: FormGroup;
+  ciudades:any[]=[];
+  cities:any[]=[];
+  public nameCiudadSelected: any = null;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private http:Http,
               private modalService: ModalService,
               public formBuilder: FormBuilder,
               public toastService: ToastService) {
-                this.createForm()
+                this.createForm();
+                this.cargarCiudades();
+                console.log(this.cities);
   }
     createForm() {
       this.slideOneForm = this.formBuilder.group({
@@ -70,7 +76,21 @@ export class RegistroPage {
         return false;
        }
      }
+     cargarCiudades(){
+     this.http.get("http://127.0.0.1:8000/ciudades")
+                 .map( resp => resp.json() )
+                 .subscribe( data=>{
+                   console.log(data);
+                   if(data.error){
+                   }else{
+                     this.ciudades.push(...data);
 
+                   }})
+     }
+
+     updateCiudad() {
+       console.log('actualizamos ciudad');
+     }
      //Funcion coordinadora lanzada para hacer el registro
      onSubmit() {
        this.modalService.showLoading('Registrando usuario...');

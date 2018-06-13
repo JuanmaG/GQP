@@ -55,7 +55,6 @@ export class AdoptedsPage {
   //Funcion del Refresher
   doRefresh(refresher) {
     console.log("refreshing");
-    alert(this.filters.racefilter)
     setTimeout(() => {
       this.cargar();
       refresher.complete();

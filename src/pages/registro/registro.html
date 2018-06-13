@@ -29,8 +29,10 @@
             <ion-input formControlName="email" type="text"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>Ciudad</ion-label>
-            <ion-input formControlName="city" type="text"></ion-input>
+          <ion-label>Ciudad</ion-label>
+          <ion-select #C formControlName="city" okText="Aceptar" cancelText="Cancelar" (ionChange)="updateCiudad(C.value)">
+            <ion-option *ngFor="let ciudad of ciudades" value="{{ciudad.id}}" [selected]="ciudad == nameCiudadSelected">{{ciudad.cities[0].name}}</ion-option>
+          </ion-select>
         </ion-item>
         <ion-item>
             <ion-label floating>Nombre</ion-label>
