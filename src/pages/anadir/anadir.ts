@@ -96,7 +96,7 @@ export class AnadirPage {
     .then((response: any) => {
       this.modalService.hideLoading();
       this.loading = false;
-      //this.toastService.show('Se le ha enviado un email para activar su cuenta.');
+      this.toastService.show('Anuncio añadido con exito');
       this.navCtrl.setRoot(HomePage); // Redirigimos a la página del listado donde pueda ver que el anuncio acaba de subirse.
     }, (error) => {
       this.modalService.hideLoading();

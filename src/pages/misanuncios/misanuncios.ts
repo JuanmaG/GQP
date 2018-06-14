@@ -9,6 +9,8 @@ import { DetailService } from '../../providers/userdetails';
 import { Component } from '@angular/core';
 import { LoadingController } from 'ionic-angular';
 
+import { ToastService } from '../../providers/toast.service';
+import { ModalService } from '../../providers/modal.service';
 @IonicPage()
 @Component({
   selector: 'page-misanuncios',
@@ -16,6 +18,7 @@ import { LoadingController } from 'ionic-angular';
 })
 export class MisanunciosPage {
 
+  loading: boolean = false;
   perro:any={};
   activeItemSliding: ItemSliding = null;
   user:any={};
@@ -28,7 +31,9 @@ export class MisanunciosPage {
               private authService: AuthService,
               private _ps:PerrosService,
               public loadingController: LoadingController,
-              private _udet: DetailService) {
+              private _udet: DetailService,
+              private modalService: ModalService,
+              public toastService: ToastService) {
                 this._udet.load();
   }
   //Funcion para comprobar que un perro pertenece al usuario actual
@@ -113,9 +118,28 @@ export class MisanunciosPage {
       'id':perrete.id
     };
 
-    this.http.post(url, body, this.authService.getHeaders())
-      .subscribe(data => {
-        console.log(data);
-      });
-  }
+    return this.http.post(url, body, this.authService.getHeaders())
+    .toPromise()
+    .then(
+      (response) => {
+        return Promise.resolve('ok');
+      },
+      (error) => {
+        return Promise.reject(error);
+      })
+}
+onDelete(perrete:any) {
+  this.modalService.showLoading('Borrando tu anuncio...');
+  this.loading = true;
+  this.delete(perrete)
+  .then((response: any) => {
+    this.modalService.hideLoading();
+    this.loading = false;
+    this.toastService.show('Anuncio borrado con exito');
+  }, (error) => {
+    this.modalService.hideLoading();
+    this.loading = false;
+    this.toastService.show('Ha habido algún error al Borrar,intentelo de nuevo mas tarde.');
+  });
+}
 }
