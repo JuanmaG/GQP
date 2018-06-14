@@ -8,7 +8,7 @@
 </ion-refresher>
 
   <ion-card *ngFor="let perro of _ps.perros" block>
-    <ion-item *ngIf="perro.state == 'Encontrado'" class="contenido">
+      <ion-item *ngIf="checkFilters(perro)" class="contenido">
       <img src="http://127.0.0.1:8000/imagen?animal_id={{perro.id}}"(click)="vista (perro)"/>
 
     <ion-card-content class="contenido-card">
@@ -31,7 +31,3 @@
         <div *ngIf="story">
         {{perro.description}}
         </div>
-
-    </ion-card-content>
-
-</ion-item>

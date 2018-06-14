@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { AuthService } from '../../providers/auth0.service';
-
+import { FiltersService } from '../../providers/filters';
 @IonicPage()
 @Component({
   selector: 'page-lost',
@@ -15,6 +15,9 @@ import { AuthService } from '../../providers/auth0.service';
 })
 export class LostPage {
 
+    comprobadorRaza:boolean;
+    comprobadorVacuna:boolean;
+    comprobadorSexo:boolean;
     story=false;
     newperros:any[]=[];
     rootNavCtrl: NavController;
@@ -26,7 +29,8 @@ export class LostPage {
       public loadingController:LoadingController,
       private navParams: NavParams,
       private authService: AuthService,
-      private emailComposer: EmailComposer) {
+      private emailComposer: EmailComposer,
+      public filters:FiltersService) {
         this.rootNavCtrl = this.navParams.get('rootNavCtrl')
       }
 
@@ -44,7 +48,55 @@ export class LostPage {
                   }})
 
     }
+    checkFilters(perro){
+      /*SI NO SE HAN APLICADO FILTROS*/
+      if(this.filters.racefilter==false){
+        this.comprobadorRaza=true;
+      }
+      if(this.filters.sexfilter==false){
+        this.comprobadorSexo=true;
+      }
+      if(this.filters.vaccfilter==false){
+        this.comprobadorVacuna=true;
+      }
+      /*********************************/
+      /*APLICANDO FILTROS*/
+      if(this.filters.racefilter){
+        if(perro.race==this.filters.specifie){
+          this.comprobadorRaza=true;
+        }
+        else if(perro.race!=this.filters.specifie){
+          this.comprobadorRaza=false;
+        }
+      }
+      if(this.filters.sexfilter){
+        if(perro.genre==this.filters.type){
+          this.comprobadorSexo=true;
+        }
+        else if(perro.genre!=this.filters.type){
+          this.comprobadorSexo=false;
+        }
+      }
+      if(perro.vaccinated=='True'&&this.filters.vaccfilter){
+        this.comprobadorVacuna=true;
+      }
+      else if((perro.vaccinated=='False'&&this.filters.vaccfilter==true)||(perro.vaccinated=='True'&&this.filters.vaccfilter==false)){
+        this.comprobadorVacuna=false;
+      }
+      /***********************************************************/
+      /*******SI CUMPLE LOS FILTROS*******************************/
+      if(this.comprobadorRaza && this.comprobadorSexo && this.comprobadorVacuna && perro.state=='Perdido'){
+      //  console.log("cumple")
+        return true;
 
+      }
+      /***********************************************************/
+      /**********************SI NO LOS CUMPLE*********************/
+      if(this.comprobadorRaza==false || this.comprobadorSexo==false || this.comprobadorVacuna==false || perro.state!='Perdido'){
+        //console.log("no cumple")
+        return false;
+      }
+    }
     //Funcion del Refresher
     doRefresh(refresher) {
       console.log("refreshing");

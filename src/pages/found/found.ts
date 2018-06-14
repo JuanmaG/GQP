@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import { LoadingController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth0.service';
 import { EmailComposer } from '@ionic-native/email-composer';
-
+import { FiltersService } from '../../providers/filters';
 @IonicPage()
 @Component({
   selector: 'page-found',
@@ -18,6 +18,10 @@ export class FoundPage {
     story=false;
     newperros:any[]=[];
     rootNavCtrl: NavController;
+    comprobadorRaza:boolean;
+    comprobadorVacuna:boolean;
+    comprobadorSexo:boolean;
+    pagefilt:boolean;
 
     constructor(public navCtrl:NavController,
       public http: Http,
@@ -26,10 +30,58 @@ export class FoundPage {
       public loadingController:LoadingController,
       private navParams: NavParams,
       private authService: AuthService,
-      private emailComposer: EmailComposer) {
+      private emailComposer: EmailComposer,
+      public filters:FiltersService) {
         this.rootNavCtrl = this.navParams.get('rootNavCtrl')
     }
-
+    checkFilters(perro){
+      /*SI NO SE HAN APLICADO FILTROS*/
+      if(this.filters.racefilter==false){
+        this.comprobadorRaza=true;
+      }
+      if(this.filters.sexfilter==false){
+        this.comprobadorSexo=true;
+      }
+      if(this.filters.vaccfilter==false){
+        this.comprobadorVacuna=true;
+      }
+      /*********************************/
+      /*APLICANDO FILTROS*/
+      if(this.filters.racefilter){
+        if(perro.race==this.filters.specifie){
+          this.comprobadorRaza=true;
+        }
+        else if(perro.race!=this.filters.specifie){
+          this.comprobadorRaza=false;
+        }
+      }
+      if(this.filters.sexfilter){
+        if(perro.genre==this.filters.type){
+          this.comprobadorSexo=true;
+        }
+        else if(perro.genre!=this.filters.type){
+          this.comprobadorSexo=false;
+        }
+      }
+      if(perro.vaccinated=='True'&&this.filters.vaccfilter){
+        this.comprobadorVacuna=true;
+      }
+      else if((perro.vaccinated=='False'&&this.filters.vaccfilter==true)||(perro.vaccinated=='True'&&this.filters.vaccfilter==false)){
+        this.comprobadorVacuna=false;
+      }
+      /***********************************************************/
+      /*******SI CUMPLE LOS FILTROS*******************************/
+      if(this.comprobadorRaza && this.comprobadorSexo && this.comprobadorVacuna && perro.state=='Encontrado'){
+        //console.log("cumple")
+        return true;
+      }
+      /***********************************************************/
+      /**********************SI NO LOS CUMPLE*********************/
+      if(this.comprobadorRaza==false || this.comprobadorSexo==false || this.comprobadorVacuna==false || perro.state!='Encontrado'){
+      //  console.log("no cumple")
+        return false;
+      }
+    }
     //Carga de los animales mediante http get a la api
     cargar(){
     this.http.get("http://127.0.0.1:8000/animal/", this.authService.getHeaders())
