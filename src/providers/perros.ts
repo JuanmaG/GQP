@@ -22,7 +22,7 @@ export class PerrosService{
 
                   }else{
                     this.perros.push(...data);
-
+                    this.perros.reverse();
                   }
                 });
 loader.dismiss();

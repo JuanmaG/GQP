@@ -56,19 +56,6 @@
       this.menu.swipeEnable(false);
     }
 
-    public presentToast() {
-      let toast = this.toastCtrl.create({
-        message: 'Work In Progress',
-        duration: 3000,
-        position: 'top'
-      });
-
-      toast.onDidDismiss(() => {
-        console.log('Dismissed toast');
-      });
-
-      toast.present();
-    }
     //Funcion para abrir pagina
     public abrirPagina(pagina:any){
       this.navCtrl.push(pagina);

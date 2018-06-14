@@ -37,10 +37,12 @@ export class LostPage {
                 .subscribe( data=>{
                   console.log(data);
                   if(data.error){
+
                   }else{
-                    this.newperros.push(...data);
-                    this._ps.perros=this.newperros;
+                    this._ps.perros.push(...data);
+                    this.newperros.reverse();
                   }})
+
     }
 
     //Funcion del Refresher
